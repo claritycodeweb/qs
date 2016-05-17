@@ -1,0 +1,34 @@
+Spotkanie 10:30 - 11:30
+
+Agenda:
+1. Kontrakt
+2. Spotkania offline / Cotygodniowe spotkania na peer programming
+3. Etapy programu techjump
+4. Projektowanie systemu
+
+1. Kontrakt
+- Jesteśmy w 100% szczerzy, wyrozumiali, nikt się nie obraża za konstruktywną krytykę, staramy się poprawić
+- Jeśli coś nam się nie podoba, to od razu informujemy drugą stronę
+- Większa część pracy spoczywa na mentee
+- Dokumentuje wszystkie pytania / watpliwosci itd
+
+2. - mamy 4h tygodniowo, 16h w miesiacu
+- Piątek? - zazwyczaj mniej rzeczy do zrobienia w pracy / nie ma release itd.
+- ustalenie dnia + godziny + salki
+
+3. 	- Projektowanie systemu, modulow, interface'ow, zaleznosci pomiedzy nimi
+	* stworzenie modulu
+	* testy jednostkowe
+	* podpiecie pod API
+	* testy integracyjne (powtorz *)
+In the background:
+	- stworzenie srodowisk lokalnych / testowych / stage / produkcyjnych
+	- deployment PAAS (heroku, openshift)
+	- CI / CD (travis, gocd)
+	- performance testing (seige, abenchmark, loadtest) / monitoring (new-relic, libratto etc)
+	- tools:
+		- backend: ginode, devtools, atom, istambul, mocha, audit.js, npm scripts, heroku toolbelt, yeoman, robomongo, eslint
+		- front: caniuse, csstriggers
+
+4. Jakbyś to zaprojektował w .net? Jakie funkcjonalności chciałbyś mieć? Czy chcesz mieć front-end do tego? Jak byś teraz to zaprojektował w JS/Node
+
