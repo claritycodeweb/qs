@@ -4,7 +4,8 @@ Agenda:
 1. Kontrakt
 2. Spotkania offline / Cotygodniowe spotkania na peer programming
 3. Etapy programu techjump
-4. Projektowanie systemu
+4. Co ty byś uznał jako sukces tego programu?
+5. Projektowanie systemu
 
 1. Kontrakt
 - Jesteśmy w 100% szczerzy, wyrozumiali, nikt się nie obraża za konstruktywną krytykę, staramy się poprawić
@@ -30,5 +31,10 @@ In the background:
 		- backend: ginode, devtools, atom, istambul, mocha, audit.js, npm scripts, heroku toolbelt, yeoman, robomongo, eslint
 		- front: caniuse, csstriggers
 
-4. Jakbyś to zaprojektował w .net? Jakie funkcjonalności chciałbyś mieć? Czy chcesz mieć front-end do tego? Jak byś teraz to zaprojektował w JS/Node
+4. ---
+
+5. Jakbyś to zaprojektował w .net?
+   Jakie funkcjonalności chciałbyś mieć?
+   Czy chcesz mieć front-end do tego?
+   Jak byś teraz to zaprojektował w JS/Node?
 
