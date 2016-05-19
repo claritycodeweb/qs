@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../app/app.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="col-xs-3 sidebar">
+            <h1>Log comming data</h1>
+        </div>
+        <div class="col-xs-9">
+            <div class="content">
+                <div class="row">
+                    <ul class="post-grid" ng-show="blog.isSelected('blog')">
+                        <li class="col-sm-3">
+                            <h3>Response Time</h3>
+                            <p>http://google.pl</p>
+                            <p id='response-time'> <span>0.00 ms<span>
+                            </p> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <script src="app/app.js"></script>
+
+</body>
+
+</html>
