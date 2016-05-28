@@ -4,7 +4,10 @@ var mongoose = require('mongoose');
 
 var statisticSchema = new mongoose.Schema({
     url: String,
-    took: String
+    took: String,
+    statusCode: String,
+    isError: Boolean,
+    message: String
 });
 
 var StatisticData = mongoose.model('StatisticsData', statisticSchema);

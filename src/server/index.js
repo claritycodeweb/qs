@@ -4,4 +4,4 @@
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 // Export the application
-exports = module.exports = require('./app');
+exports = module.exports = require('./app')(require('./container'));

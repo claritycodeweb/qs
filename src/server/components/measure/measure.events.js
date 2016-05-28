@@ -22,7 +22,7 @@ for (var e in events) {
 
 function emitEvent(event) {
   return function(doc) {
-    MeasureEvents.emit(event + ':' + doc._id, doc);
+    //MeasureEvents.emit(event + ':' + doc._id, doc);
     MeasureEvents.emit(event, doc);
   };
 }

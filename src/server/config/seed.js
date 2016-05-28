@@ -1,6 +1,9 @@
 'use strict';
 
 var Stat = require('../model/statistic');
+var StatData = require('../model/statistic.data');
+
+StatData.find({}).remove().exec();
 
 Stat.find({}).remove()
   .then(() => {
