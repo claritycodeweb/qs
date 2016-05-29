@@ -8,6 +8,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: {
             // configurable paths
+            client: require('./bower.json').appPath || 'client',
             server: 'server'
         },
         mochaTest: {
@@ -24,8 +25,20 @@ module.exports = function (grunt) {
             test: {
                 NODE_ENV: 'test'
             }
-        }
+        },
+        // Inject Bower components into the app
+        wiredep: {
+            options: {
+                exclude: [
+                ],
+            },
+            client: {
+                src: '<%= yeoman.client %>/index.html',
+                ignorePath: '<%= yeoman.client %>/',
+            }
+        },
     });
+
     grunt.registerTask('test', function (target, option) {
         if (target === 'server') {
             return grunt.task.run([
@@ -37,4 +50,7 @@ module.exports = function (grunt) {
             'test:server'
         ]);
     });
+
+    grunt.registerTask('build', [
+        'wiredep:client']);
 };

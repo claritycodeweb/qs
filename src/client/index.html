@@ -7,6 +7,11 @@
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../app/app.css">
+
+    <!-- build:css(client) -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -32,10 +37,14 @@
         </div>
         <div style="clear:both"></div>
     </div>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/socket.io-client/socket.io.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+    <!-- build:js({client,node_modules}) -->
+      <!-- bower:js -->
+      <script src="bower_componenjquery/dist/jquery.js"></script>
+      <script src="bower_componenbootstrap/dist/js/bootstrap.js"></script>
+      <!-- endbower -->
+    <!-- endbuild -->
+        
+        <script src="bower_components/socket.io-client/socket.io.js"></script>   
     <script src="app/app.js"></script>
 
 </body>
