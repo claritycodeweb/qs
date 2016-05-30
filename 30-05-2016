@@ -1,0 +1,25 @@
+
+var took = requester.get('http://google.com');
+
+took.then(function(response) {
+  var time = response.time;
+
+  model.create({
+    url...
+  })
+})
+
+-----------------
+
+
+
+describe('requester', function() {
+  it('should record time it took to complete request', function(done) {
+    var took = requester.get('http://google.com');
+
+    took.then(function(response) {
+      assert(450 < response.time && resopnse.time < 500);
+      done();
+    })
+  })
+})
