@@ -1,5 +1,5 @@
 // Expose app
-exports = module.exports =  function (container) {
+exports = module.exports = function (container) {
     // connect to db
     container.mongoose.connect(container.config.mongo.uri, container.config.mongo.options);
     container.mongoose.connection.on('error', function (err) {
@@ -8,9 +8,9 @@ exports = module.exports =  function (container) {
     });
 
     // prepare initial data
-    if (container.config.seedDB) { 
+    if (container.config.seedDB) {
         console.log("SeedDB Active, Clean/Restore DB data.")
-        require('./config/seed'); 
+        require('./config/seed');
     }
 
     // Setup server
@@ -18,26 +18,27 @@ exports = module.exports =  function (container) {
     var server = container.http.createServer(app);
     require('./config/express')(app);
     require('./routes')(app);
-    
+
     // Setup socketIo
     var socketio = container.socketIo(server);
     require('./config/socketio')(socketio);
 
-    // Start collect statistics
-    var stat = require('./components/measure')(container.http)
-    stat.responseTime('http://localhost/angjs/', 5000);
+    // Start collect statistics      
+    container.measure.responseTime('http://localhost/angjs/', 5000);
+    
+    ///stat.responseTime('http://localhost/angjs/', 5000);
     socketio.on('disconnect', function () {
-        stat.stop();
+         container.measure.stop();
     });
-
+      
     function runApp() {
         app.qs = server.listen(container.config.port, container.config.ip, function () {
             console.log('Server listening on %d, in %s mode', container.config.port, app.get('env'));
         });
     }
-    
+
     // Run app
     runApp();
 
-   return app;
+    return app;
 };

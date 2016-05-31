@@ -2,58 +2,41 @@
 
 var model = require('../../model/statistic.data');
 
-var measureService = function (http) {
+var measureService = function (http, stat) {
     var timeOut;
-
-    function responseTimeInterval(url, socket) {
-        var start = new Date();
-        http.get({ host: url, port: 80 }, function (res) {
-            var took = new Date() - start;
-            model.create({ url: url, took: took });
-            //socket.emit('responsetime', {url: url, took: took});
-        }).on("error", function (e) {
-            console.log("GET request error")
-            interval *= 2;
-        });
-    }
-
+    
     function responseTime(url, interval) {
         interval = interval || 5000;
         var defaultInterval = interval;
+
         function callback() {
-            var start = new Date();
-            http.get(url, function (res) {
-                var took = new Date() - start;
+            stat.responseTime(url).then(function (data) {
                 model.create({
                     url: url,
-                    took: took,
-                    statusCode: res.statusCode,
+                    took: data.took,
+                    statusCode: data.res.statusCode,
                     isError: false,
-                    message: res.statusMessage
+                    message: data.res.statusMessage
                 });
 
-                if (took > 5000) {
+                if (data.took > 5000) {
                     interval += 2000;
                 } else {
                     interval = defaultInterval;
                 }
-
-                //console.log('Interval ' + interval/1000 + "s" + " took: "+ took);
-
-            }).on("error", function (e) {
+                
+            }, function (err) {
+                
                 model.create({
                     url: url,
                     took: 0,
-                    statusCode: e.statusCode,
+                    statusCode: err.statusCode,
                     isError: true,
-                    message: e.message
+                    message: err.message
                 });
 
                 interval += 2000;
-
-                //console.log('Interval ' + interval/1000 + "s");
-                
-            }).end();
+            });
             timeOut = setTimeout(callback, interval);
         }
         timeOut = setTimeout(callback, interval);
@@ -64,7 +47,6 @@ var measureService = function (http) {
     }
 
     return {
-        //responseTimeInterval: responseTimeInterval,
         responseTime: responseTime,
         stop: stop
     };
