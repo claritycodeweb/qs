@@ -9,44 +9,33 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
-
-    <link rel="stylesheet" href="../app/app.css">
-
+    
+    <!-- injector:css -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- endinjector -->
 </head>
 
-<body>
-    <div class="wrap">
-        <div class="col-xs-3 sidebar">
-            <h1>Log comming data</h1>
-        </div>
-        <div class="col-xs-9">
-            <div class="content">
-                <div class="row">
-                    <ul class="post-grid" ng-show="blog.isSelected('blog')">
-                        <li class="col-sm-3">
-                            <h3>Response Time</h3>
-                            <p>http://google.pl</p>
-                            <p id='res-status-code'> Status code: <span>__<span>
-                            </p> 
-                            <p id='res-response-time'> Response time: <span>0.00 ms<span>
-                            </p> 
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-    <!-- build:js({client,node_modules}) -->
-      <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-      <!-- endbower -->
-    <!-- endbuild -->
-        
-        <script src="bower_components/socket.io-client/socket.io.js"></script>   
-    <script src="app/app.js"></script>
+<body ng-app="app">
 
+    <div ng-view="" style="height:100%;"></div>
+    <!-- build:js({client,node_modules}) -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="app/app.js"></script>
+    <!-- injector:js -->
+    <script src="app/main/main.module.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="components/socket/socket.service.js"></script>
+    <!-- endinjector -->
 </body>
 
 </html>

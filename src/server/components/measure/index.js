@@ -1,6 +1,6 @@
 'use strict';
 
-var model = require('../../model/statistic.data');
+var model = require('../../model/statistic.model');
 
 var measureService = function (http, stat) {
     var timeOut;

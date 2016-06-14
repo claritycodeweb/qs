@@ -5,7 +5,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var http = require('http');
 var socketIo = require('socket.io');
-var promise = require('promise');
+var socketIoService =  require('./config/socketio');
 
 var statistics = require('./components/statistic')(http);
 var measure = require('./components/measure')(http, statistics);
@@ -19,7 +19,7 @@ module.exports = {
     http: http,
     config: config,
     socketIo: socketIo,
-    promise: promise,
     statistics: statistics,
-    measure: measure
+    measure: measure,
+    socketIoService: socketIoService
 }

@@ -18,14 +18,15 @@ HttpMock.prototype.get = function (url, callBack) {
         statusMessage: this.messageSuccess
     }
 
-    //setTimeout(callBack(res), 500);
-    callBack(res);
-
+    setTimeout(function () {
+        callBack(res)
+    }, 500);
+    
     return this;
 }
 
 HttpMock.prototype.end = function () {
-    //console.log("end http get");
+    console.log("end http get");
 }
 
 module.exports = HttpMock

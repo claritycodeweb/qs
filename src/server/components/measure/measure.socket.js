@@ -22,6 +22,7 @@ module.exports.register = function (socket) {
 
 function createListener(event, socket) {
   return function(doc) {
+    //console.log('emit: ' + JSON.stringify(doc));
     socket.emit(event, doc);
   };
 }

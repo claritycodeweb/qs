@@ -3,11 +3,15 @@
  */
 
 'use strict';
+var EventEmitter = require('events');
 
 var socketService = function (socketIo) {
+
+    var Events = new EventEmitter();
+
     // When the client disconnects
     function onDisconnect(socket) {
-
+        Events.emit('disconnect');
     }
 
     // When the client connects
@@ -21,29 +25,46 @@ var socketService = function (socketIo) {
         require('../components/measure/measure.socket').register(socket);
     }
 
-    socketIo.on('connection', function (socket) {
-        socket.address = socket.request.connection.remoteAddress +
-            ':' + socket.request.connection.remotePort;
+    function start() {
+        socketIo.on('connection', function (socket) {
+            socket.address = socket.request.connection.remoteAddress +
+                ':' + socket.request.connection.remotePort;
 
-        socket.connectedAt = new Date();
+            socket.connectedAt = new Date();
 
-        socket.log = function (data) {
-            console.log('SocketIO ' + socket.nsp.name + ' ' + socket.address + ' ' + data);
-        };
+            socket.log = function (data) {
+                console.log('SocketIO ' + socket.nsp.name + ' ' + socket.address + ' ' + data);
+            };
 
-        // Call onDisconnect.
-        socket.on('disconnect', function () {
-            onDisconnect(socket);
-            socket.log('DISCONNECTED');
+            // Call onDisconnect.
+            socket.on('disconnect', function () {
+                onDisconnect(socket);
+                socket.log('DISCONNECTED');
+            });
+
+            // Call onConnect.
+            onConnect(socket);
+            socket.log('CONNECTED');
         });
+        
+        return this;
+    }
 
-        // Call onConnect.
-        onConnect(socket);
-        socket.log('CONNECTED');
-    });
+    function disconnect(callback) {
+        var listner = createListener('disconnect', callback);
+        Events.on('disconnect', listner);
+    }
 
+    function createListener(event, callBack) {
+        return function () {
+            console.log('SocketIO, emit event ' + event);
+            callBack();
+        };
+    }
+    
     return {
-        //test: test,
+        start: start,
+        disconnect: disconnect
     };
 };
 

@@ -20,17 +20,14 @@ exports = module.exports = function (container) {
     require('./routes')(app);
 
     // Setup socketIo
-    var socketio = container.socketIo(server);
-    require('./config/socketio')(socketio);
+    var socketIoService = container.socketIoService(container.socketIo(server));
+    socketIoService.start().disconnect(function () {
+        //container.measure.stop();
+    });
 
     // Start collect statistics      
-    container.measure.responseTime('http://localhost/angjs/', 5000);
-    
-    ///stat.responseTime('http://localhost/angjs/', 5000);
-    socketio.on('disconnect', function () {
-         container.measure.stop();
-    });
-      
+    container.measure.responseTime('http://localhost/angjs/', 10000);
+
     function runApp() {
         app.qs = server.listen(container.config.port, container.config.ip, function () {
             console.log('Server listening on %d, in %s mode', container.config.port, app.get('env'));

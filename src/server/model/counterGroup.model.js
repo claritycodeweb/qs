@@ -3,13 +3,12 @@
 var mongoose = require('mongoose');
 
 var statisticSchema = new mongoose.Schema({
+    _id: Number,
     name: String,
-    type: String,
-    url: String,
     unit: String,
     enable: Boolean
 });
 
-var Statistic = mongoose.model('Statistics', statisticSchema);
+var CounterGroup = mongoose.model('CounterGroup', statisticSchema);
 
-module.exports = Statistic;
+module.exports = CounterGroup;

@@ -2,7 +2,7 @@
 
 //imports
 var EventEmitter = require('events');
-var StatData =  require('../../model/statistic.data');
+var StatData =  require('../../model/statistic.model');
 
 var MeasureEvents = new EventEmitter();
 
