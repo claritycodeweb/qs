@@ -1,25 +1,16 @@
-<div class="wrap" data-ng-controller="MainController as vm">
-    <div class="col-xs-3 sidebar">
-        <h1>Log comming data</h1>
-        <div ng-repeat="obj in vm.statistics track by $index">
-            {{obj}}
-        </div>
+<div class="boardmanager" ng-controller="MainController as vm">
+    <div class="breadcrumbs"><span ng-show="vm.boards.length > 0" class="folderName">Boards:</span></div>
+    <ul class="data animated">
+        <li class="folders" ng-repeat="item in vm.boards">
+            <a href="#/board/{{item.name}}" title="{{item.name}}" class="folders">
+                <span class="icon file">QS</span><span class="name">{{item.name}}</span>
+                <span class="details">{{item.counters.length}} counters</span>
+            </a>
+        </li>
+    </ul>
+
+    <div ng-show="vm.boards.length == 0" class="nothingfound">
+        <div class="noboard"></div>
+        <span>No boards found</span>
     </div>
-    <div class="col-xs-9">
-        <div class="content">
-            <div class="row">
-                <ul class="post-grid">
-                    <li class="col-sm-3">
-                        <h3>Response Time</h3>
-                        <p>{{vm.actual.url}} </p>
-                        <p id='res-status-code'> Status code: <span>{{vm.actual.statusCode}} <span>
-                            </p> 
-                            <p id='res-response-time'> Response time: <span>{{vm.actual.took }} ms<span>
-                            </p> 
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div style="clear:both"></div>
-    </div>
+</div>

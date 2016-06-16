@@ -7,9 +7,10 @@
     <!-- build:css(client) -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    
+
     <!-- injector:css -->
     <link rel="stylesheet" href="app/app.css">
     <!-- endinjector -->
@@ -17,7 +18,7 @@
 
 <body ng-app="app">
 
-    <div ng-view="" style="height:100%;"></div>
+    <div ng-include="'/app/core/core.html'"></div>
     <!-- build:js({client,node_modules}) -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -33,6 +34,15 @@
     <script src="app/app.js"></script>
     <!-- injector:js -->
     <script src="app/main/main.module.js"></script>
+    <script src="app/board/board.module.js"></script>
+    <script src="components/board/board.module.js"></script>
+    <script src="components/common/common.module.js"></script>
+    <script src="app/main/main.route.js"></script>
+    <script src="app/board/board.controller.js"></script>
+    <script src="app/board/board.route.js"></script>
+    <script src="app/core/core.controller.js"></script>
+    <script src="components/board/board.service.js"></script>
+    <script src="components/common/common.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <!-- endinjector -->

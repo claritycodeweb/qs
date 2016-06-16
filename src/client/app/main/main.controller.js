@@ -5,24 +5,24 @@
     var controllerId = 'MainController';
 
     angular.module('app.main')
-        .controller(controllerId, ['$scope', '$http', 'socket', '$rootScope', main]);
+        .controller(controllerId, ['$scope', '$http', 'socket', '$rootScope', 'BoardService', main]);
 
-    function main($scope, $http, socket, $rootScope) {
+    function main($scope, $http, socket, $rootScope, BoardService) {
         var vm = this;
-        vm.statistics = [];
-        
         function init() {
-            vm.statistics.push({});
-            socket.syncUpdates('measure')
+            BoardService.getAll()
+                .then(function (data) {
+                    vm.boards = data;
+                    if (data.length > 0) {
+                        //socket.syncUpdates('measure')
+                    }
+                    
+                    $rootScope.$broadcast('spinnerToggle', false);
+                }, function (error) {
+                    $rootScope.$broadcast('spinnerToggle', false);
+                    console.log(error);
+                });
         }
-
-        $rootScope.$on('new-statistics', function (event, data) {
-            if (data) {
-                vm.statistics.push(data);
-                $scope.$apply()
-                vm.actual = data;
-            }
-        });
 
         init();
     }
