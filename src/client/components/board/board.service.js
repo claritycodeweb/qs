@@ -5,7 +5,9 @@
     /**
      * The Board service
      */
-    function BoardService($location, $http, $q) {
+    function BoardService($location, $http, $q, $cookieStore) {
+        var items = {};    
+
 
         var Board = {
             getAll: function () {

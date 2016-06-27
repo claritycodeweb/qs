@@ -26,7 +26,7 @@
             }
         );
         
-        $rootScope.$on('spinnerToggle',
+        $rootScope.$on('spinner.toggle',
             function (event, data) {
                 toggleSpinner(false);
             }

@@ -8,6 +8,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -27,23 +28,27 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <script src="bower_components/socket.io-client/socket.io.js"></script>
     <script src="app/app.js"></script>
     <!-- injector:js -->
-    <script src="app/main/main.module.js"></script>
     <script src="app/board/board.module.js"></script>
+    <script src="app/main/main.module.js"></script>
     <script src="components/board/board.module.js"></script>
     <script src="components/common/common.module.js"></script>
     <script src="app/main/main.route.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/app.config.js"></script>
     <script src="app/board/board.controller.js"></script>
     <script src="app/board/board.route.js"></script>
-    <script src="app/core/core.controller.js"></script>
     <script src="components/board/board.service.js"></script>
     <script src="components/common/common.js"></script>
-    <script src="app/main/main.controller.js"></script>
+    <script src="app/core/core.controller.js"></script>
+    <script src="components/common/logger.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <!-- endinjector -->
 </body>

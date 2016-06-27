@@ -16,13 +16,13 @@ html, body {height: 100%}
   padding: 20px 20px 20px;
 }
 
-ul.post-grid {
+ul.counters {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-ul.post-grid li {
+ul.counters li {
   background: #3a8bab;
   color: white;
   padding: 20px;
@@ -31,6 +31,7 @@ ul.post-grid li {
   transition: background linear 0.5s;
   border-bottom: 1px solid #3a8bab;
   margin: 10px;
+  	z-index: 1000;
 }
 
 /*-------------------------
@@ -315,7 +316,7 @@ body {
         bottom: 5px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #e74c3c;
+        border-top-color: #3498db;
 
         -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
         animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -330,7 +331,7 @@ body {
         bottom: 15px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #f9c922;
+        border-top-color: #3498db;
 
         -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
           animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
@@ -378,3 +379,22 @@ body {
   float: none;
   display: inline-block;
 }
+
+
+.center {
+ 	position:absolute;
+    width: 100px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px; /* margin is -0.5 * dimension */
+    margin-top: -25px; 
+	color:white;
+    opacity:0.1;
+	z-index:99;
+}
+
+
+.center h1 {
+ font-size: 40px;   
+} 

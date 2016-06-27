@@ -5,21 +5,22 @@
     var controllerId = 'MainController';
 
     angular.module('app.main')
-        .controller(controllerId, ['$scope', '$http', 'socket', '$rootScope', 'BoardService', main]);
+        .controller(controllerId, ['$scope', '$http', 'socket', '$rootScope', 'BoardService', 'common', main]);
 
-    function main($scope, $http, socket, $rootScope, BoardService) {
+    function main($scope, $http, socket, $rootScope, BoardService, common) {
         var vm = this;
+
         function init() {
-            BoardService.getAll()
+            common.activate([getAllBoards()], controllerId);
+        }
+
+        function getAllBoards() {
+            return BoardService.getAll()
                 .then(function (data) {
                     vm.boards = data;
-                    if (data.length > 0) {
-                        //socket.syncUpdates('measure')
-                    }
-                    
-                    $rootScope.$broadcast('spinnerToggle', false);
+                    common.logger.log("Boards Loaded", '', '', true);
+                    return data;
                 }, function (error) {
-                    $rootScope.$broadcast('spinnerToggle', false);
                     console.log(error);
                 });
         }

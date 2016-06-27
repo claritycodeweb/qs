@@ -25,12 +25,36 @@ exports = module.exports = function (container) {
         //container.measure.stop();
     });
 
-    // Start collect statistics      
-    container.measure.responseTime('http://localhost/angjs/', 10000);
-
     function runApp() {
         app.qs = server.listen(container.config.port, container.config.ip, function () {
             console.log('Server listening on %d, in %s mode', container.config.port, app.get('env'));
+            var Board = require('./model/board.model');
+            var CounterGroup = require('./model/counterGroup.model');
+            var Counter = require('./model/counter.model');
+            
+            setTimeout(function() {
+              Board
+                .find({})
+                .populate({ path: 'counters', populate: { path: '_counterGroup', model: CounterGroup, select: 'name' } })
+                .then(function (board) {
+                    //console.log('The creator is %s', JSON.stringify(board, null, 4));
+                    board.forEach(function (b) {
+                        b.counters.forEach(function (c) {
+                            if (typeof c.url !== 'undefined') {
+                                console.log(c.url);
+                                container.measure.responseTime(c.url, 10000, b, c);
+                            }
+                        }, this);
+
+                    }, this);
+
+                })              
+            }, 500);
+            
+
+
+            // Start collect statistics      
+
         });
     }
 

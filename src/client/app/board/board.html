@@ -2,7 +2,7 @@
     <header class="clearfix">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <ul class="nav navbar-nav">
-                <li class="pull-left"><a href="#/" ><i class="fa fa-th" aria-hidden="true"></i></a>
+                <li class="pull-left"><a href="#/"><i class="fa fa-th" aria-hidden="true"></i></a>
                 </li>
                 <li><a href="#/board/{{vm.board.name}}">{{vm.board.name}}</a>
                 </li>
@@ -12,18 +12,19 @@
     <div class="container-fluid" style="padding-top:60px">
         <div class="row">
             <div class="col-md-12">
-                <ul class="post-grid">
+                <ul class="counters">
                     <li class="col-sm-3" ng-repeat="counter in vm.board.counters">
                         <h3>{{counter.name}}</h3>
                         <p>{{counter.url}} </p>
-                        <p id='res-status-code'> Status code: {{vm.actual.statusCode}}
+                        <p id='res-status-code'> Status code: {{vm.stat[vm.board._id][counter._id].last.statusCode}}
                         </p>
-                        <p id='res-response-time'> Response time: {{vm.actual.took }} ms
+                        <p id='res-response-time'> Response time: {{vm.stat[vm.board._id][counter._id].last.took }} ms
                         </p>
                     </li>
                 </ul>
 
             </div>
+            <div class="center"><h1>{{vm.board.name}}</h1></div>
             <div style="clear:both"></div>
         </div>
     </div>

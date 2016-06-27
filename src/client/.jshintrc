@@ -17,6 +17,7 @@
         "angular": true,
         "console": true,
         "$": true,
-        "_": true
+        "_": true,
+        "toastr": true
     }
 }

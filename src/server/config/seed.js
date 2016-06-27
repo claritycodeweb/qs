@@ -37,7 +37,7 @@ Board.find({}).remove().then(() => {
 
     board1.save(function (err) {
       var stat1 = new Counter({
-        name: "response1",
+        name: "Response 1",
         url: "http://localhost/angjs/",
         _board: board1._id,
         _counterGroup: 1
@@ -46,15 +46,70 @@ Board.find({}).remove().then(() => {
       stat1.save();
 
       var stat2 = new Counter({
-        name: "disk space",
+        name: "Response 2 test long text",
+        url: "http://localhost/angtest/",
         _board: board1._id,
-        _counterGroup: 3
+        _counterGroup: 1
       });
 
       stat2.save();
 
+      var stat3 = new Counter({
+        name: "Response 3 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat3.save();
+
+      var stat4 = new Counter({
+        name: "Response 4 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat4.save();
+
+      var stat5 = new Counter({
+        name: "Response 5 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat5.save();
+
+      var stat6 = new Counter({
+        name: "Response 6 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat6.save();
+
+      var stat7 = new Counter({
+        name: "Response 7 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat7.save();
+
+      var stat8 = new Counter({
+        name: "Response 8 test long text",
+        url: "http://localhost/angtest/",
+        _board: board1._id,
+        _counterGroup: 1
+      });
+
+      stat8.save();
+
       board1.counters = [
-        stat2, stat1
+        stat1, stat2, stat3, stat4, /*stat5, stat6, stat7, stat8*/
       ];
 
       board1.save();

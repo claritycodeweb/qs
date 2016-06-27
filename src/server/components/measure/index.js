@@ -5,7 +5,7 @@ var model = require('../../model/statistic.model');
 var measureService = function (http, stat) {
     var timeOut;
     
-    function responseTime(url, interval) {
+    function responseTime(url, interval, board, counter) {
         interval = interval || 5000;
         var defaultInterval = interval;
 
@@ -16,7 +16,9 @@ var measureService = function (http, stat) {
                     took: data.took,
                     statusCode: data.res.statusCode,
                     isError: false,
-                    message: data.res.statusMessage
+                    message: data.res.statusMessage,
+                    _board: board._id,
+                    _counter: counter._id
                 });
 
                 if (data.took > 5000) {
