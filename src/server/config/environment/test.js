@@ -5,9 +5,10 @@
 module.exports = {
     // MongoDB connection options
     mongo: {
-        uri: 'mongodb://localhost/qs-test'
+        uri: 'mongodb://127.0.0.1/qs-test'
     },
     
     // Seed database on startup
-    seedDB: true
+    seedDB: false,
+    runMeasure: false
 }

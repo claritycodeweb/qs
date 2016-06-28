@@ -58,8 +58,10 @@ exports = module.exports = function (container) {
         });
     }
 
-    // Run app
-    runApp();
+    if (container.config.runMeasure) {
+        // Run app
+        runApp();
+    }
 
     return app;
 };

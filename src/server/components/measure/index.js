@@ -4,6 +4,7 @@ var model = require('../../model/statistic.model');
 
 var measureService = function (http, stat) {
     var timeOut;
+    var responses = [];
     
     function responseTime(url, interval, board, counter) {
         interval = interval || 5000;
@@ -11,7 +12,7 @@ var measureService = function (http, stat) {
 
         function callback() {
             stat.responseTime(url).then(function (data) {
-                model.create({
+                var res = {
                     url: url,
                     took: data.took,
                     statusCode: data.res.statusCode,
@@ -19,7 +20,9 @@ var measureService = function (http, stat) {
                     message: data.res.statusMessage,
                     _board: board._id,
                     _counter: counter._id
-                });
+                }
+                responses.push(res);
+                model.create(res);
 
                 if (data.took > 5000) {
                     interval += 2000;
@@ -28,14 +31,15 @@ var measureService = function (http, stat) {
                 }
                 
             }, function (err) {
-                
-                model.create({
+                var resErr = {
                     url: url,
                     took: 0,
                     statusCode: err.statusCode,
                     isError: true,
                     message: err.message
-                });
+                };
+                responses.push(resErr);
+                model.create(resErr);
 
                 interval += 2000;
             });
@@ -44,13 +48,20 @@ var measureService = function (http, stat) {
         timeOut = setTimeout(callback, interval);
     }
 
-    function stop() {
+    function stop(callback) {
         clearTimeout(timeOut);
+        
+        if(callback){
+            callback();
+        }
     }
 
     return {
         responseTime: responseTime,
-        stop: stop
+        stop: stop,
+        responses: function () {
+            return responses;
+        }
     };
 };
 

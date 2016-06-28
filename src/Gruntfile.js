@@ -19,6 +19,9 @@ module.exports = function (grunt) {
             },
             unit: {
                 src: ['<%= yeoman.server %>/**/*.spec.js']
+            },
+            integration: {
+                src: ['<%= yeoman.server %>/**/*.integration.js']
             }
         },
         env: {
@@ -83,7 +86,7 @@ module.exports = function (grunt) {
                         '<%= yeoman.client %>/{app,components}/**/*.css'
                     ]
                 }
-            } 
+            }
         }
     });
 
@@ -91,7 +94,8 @@ module.exports = function (grunt) {
         if (target === 'server') {
             return grunt.task.run([
                 'env:test',
-                'mochaTest:unit'
+                'mochaTest:unit',
+                'mochaTest:integration'
             ]);
         }
         else grunt.task.run([
