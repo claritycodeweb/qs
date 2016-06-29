@@ -1,0 +1,16 @@
+Example app that is monitored:
+- Create an example app (yeomann for example)
+- create an app on heroku
+- deploy an that app to heroku
+- add new relic plugin
+- get new relic api keys
+
+Inside project:
+ - implement module in QS that asks for new-relic data
+
+To checkout:
+- is it possible to get heroku app logs via API
+
+To send:
+- strongloop API
+
