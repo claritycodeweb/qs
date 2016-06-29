@@ -20,6 +20,7 @@
         "after": true,
         "afterEach": true,
         "expect": true,
-        "assert": true
+        "assert": true,
+        "sinon": true
     }
 }

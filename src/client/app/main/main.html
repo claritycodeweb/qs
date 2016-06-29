@@ -2,7 +2,7 @@
     <div class="breadcrumbs"><span ng-show="vm.boards.length > 0" class="folderName">Boards:</span></div>
     <ul class="data animated">
         <li class="folders" ng-repeat="item in vm.boards">
-            <a href="#/board/{{item.name}}" title="{{item.name}}" class="folders">
+            <a href="#/board/{{item.urlName}}" title="{{item.name}}" class="folders">
                 <span class="icon file">QS</span><span class="name">{{item.name}}</span>
                 <span class="details">{{item.counters.length}} counters</span>
             </a>

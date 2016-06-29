@@ -32,8 +32,8 @@ CounterGroup.find({}).remove()
 
 Board.find({}).remove().then(() => {
   Counter.find({}).remove().then(() => {
-    var board1 = new Board({ _id: 1, name: 'qs1', enable: true });
-    var board2 = new Board({ _id: 2, name: 'qs2', enable: false });
+    var board1 = new Board({ _id: 1, name: 'qs1', urlName: 'qs1', enable: true });
+    var board2 = new Board({ _id: 2, name: 'qs2', urlName: 'qs1', enable: false });
 
     board1.save(function (err) {
       var stat1 = new Counter({

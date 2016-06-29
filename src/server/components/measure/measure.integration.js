@@ -6,13 +6,12 @@ var StatData = require('../../model/statistic.model');
 var Board = require('../../model/board.model');
 var Counter = require('../../model/counter.model');
 
-describe('Circle Repsonse Time:', function () {
-    describe('responseTime', function () {
+describe('Circle Collect Statistics:', function () {
+    describe('Response Time', function () {
 
         var httpFake = new HttpMock();
         var stat = require('../statistic')(httpFake);
         var measure = require('./index')(httpFake, stat);
-        var url = 'http://localhost/fake/';
 
         beforeEach(function (done) {
             CounterGroup.find({}).remove()
@@ -59,11 +58,13 @@ describe('Circle Repsonse Time:', function () {
 
         afterEach(function (done) {
             StatData.remove({}, function () {
-                done();
+               Board.remove({}, function () {
+                   done();
+               })
             });
         });
 
-        it("should record multiple time took to complete multiple request", function (done) {
+        it("should record multiple times took to complete multiple request", function (done) {
 
             Board.find()
                 .populate({
@@ -82,23 +83,23 @@ describe('Circle Repsonse Time:', function () {
                         board.counters.forEach(function (counter) {
                             if (typeof counter.url !== 'undefined') {
                                 measure.responseTime(counter.url, 200, board, counter);
-                                setTimeout(function() {
-                                    measure.stop(function(){
-                                        measure.responses().forEach(function(element) {
-                                           
-                                            assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');   
-                                                     
+                                setTimeout(function () {
+                                    measure.stop(function () {
+                                        measure.responses().forEach(function (element) {
+
+                                            assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');
+
                                         }, this);
-                                        done(); 
-                                    })                                   
+                                        done();
+                                    })
                                 }, 1500);
-                                                                                               
+
                             }
                         }, this);
 
                     }, this);
 
-                    
+
                 })
 
 

@@ -68,7 +68,7 @@ module.exports.index = function (req, res) {
 
 // Gets a single Board from the DB
 module.exports.show = function (req, res) {
-    Board.findOne({ name: req.params.id })
+    Board.findOne({ urlName: req.params.id })
         .populate({ path: 'counters', populate: { path: '_counterGroup', model: CounterGroup, select: 'name' } })
         .then(handleEntityNotFound(res))
         .then(respondWithResult(res))
@@ -77,6 +77,7 @@ module.exports.show = function (req, res) {
 
 // Creates a new Board in the DB
 module.exports.create = function (req, res) {
+    req.body.urlName = req.body.name.trim().replace(/\s+/g, '-');
     Board.create(req.body)
         .then(respondWithResult(res, 201))
         .catch(handleError(res));
@@ -87,7 +88,7 @@ module.exports.update = function (req, res) {
     if (req.body._id) {
         delete req.body._id;
     }
-    Board.findOne({ name: req.params.id })
+    Board.findOne({ urlName: req.params.id })
         .then(handleEntityNotFound(res))
         .then(saveUpdates(req.body))
         .then(respondWithResult(res))
@@ -96,7 +97,7 @@ module.exports.update = function (req, res) {
 
 // Deletes a Board from the DB
 module.exports.destroy = function (req, res) {
-    Board.findOne({ name: req.params.id })
+    Board.findOne({ urlName: req.params.id })
         .then(handleEntityNotFound(res))
         .then(removeEntity(res))
         .catch(handleError(res));
