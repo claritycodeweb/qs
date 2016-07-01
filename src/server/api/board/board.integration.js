@@ -10,6 +10,7 @@ describe('Board API:', function () {
     describe('GET /api/boards', function () {
         var boards;
 
+        // before each is not needed here. this is the actual test
         beforeEach(function (done) {
             request(app)
                 .get('/api/boards')
@@ -17,14 +18,15 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                        return done(err);
+                      throw new Error('e'); // if you do not throw error here
                     }
                     boards = res.body;
                     done();
                 });
         });
 
-        it('should respond with JSON array', function () {
+        it.only('should respond with JSON array', function () {
+          // you'll get misleadning info here
             boards.should.be.instanceOf(Array);
         });
 
@@ -43,6 +45,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
+                      // same here
                         return done(err);
                     }
                     newBoard = res.body;

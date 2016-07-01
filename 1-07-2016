@@ -1,0 +1,13 @@
+Auto incremet:
+- https://docs.mongodb.com/v3.0/tutorial/create-an-auto-incrementing-field/
+
+Co zrobilismy:
+- code review
+
+Co na nastepny raz:
+- poprawa testow
+- statystyki z new-relica
+- w module seedujacym baze danych wykorzystac promise
+
+Poszukać i wysłać informacje na temat chartów w quality station
+

@@ -4,8 +4,10 @@ var model = require('../../model/statistic.model');
 
 var measureService = function (http, stat) {
     var timeOut;
+
+    // This will grow infinitely causing out of memory error.
     var responses = [];
-    
+
     function responseTime(url, interval, board, counter) {
         interval = interval || 5000;
         var defaultInterval = interval;
@@ -29,7 +31,7 @@ var measureService = function (http, stat) {
                 } else {
                     interval = defaultInterval;
                 }
-                
+
             }, function (err) {
                 var resErr = {
                     url: url,
@@ -38,7 +40,7 @@ var measureService = function (http, stat) {
                     isError: true,
                     message: err.message
                 };
-                responses.push(resErr);
+                responses.push(resErr); // HERE
                 model.create(resErr);
 
                 interval += 2000;
@@ -50,7 +52,7 @@ var measureService = function (http, stat) {
 
     function stop(callback) {
         clearTimeout(timeOut);
-        
+
         if(callback){
             callback();
         }

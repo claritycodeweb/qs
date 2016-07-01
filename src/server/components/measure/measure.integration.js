@@ -6,6 +6,9 @@ var StatData = require('../../model/statistic.model');
 var Board = require('../../model/board.model');
 var Counter = require('../../model/counter.model');
 
+// either use database in memory or move this test that it wouldn't be run
+// in CI cycle
+
 describe('Circle Collect Statistics:', function () {
     describe('Response Time', function () {
 
@@ -85,6 +88,8 @@ describe('Circle Collect Statistics:', function () {
                                 measure.responseTime(counter.url, 200, board, counter);
                                 setTimeout(function () {
                                     measure.stop(function () {
+
+                                      // look for changes in model
                                         measure.responses().forEach(function (element) {
 
                                             assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');
