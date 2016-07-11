@@ -27,7 +27,9 @@ var all = {
                 safe: true
             }
         }
-    }
+    },
+    
+    inMemoryDb: false
 };
 
 // Export the config object based on the NODE_ENV

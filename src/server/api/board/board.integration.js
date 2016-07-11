@@ -18,15 +18,14 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                      throw new Error('e'); // if you do not throw error here
+                      throw new Error(err);
                     }
                     boards = res.body;
                     done();
                 });
         });
 
-        it.only('should respond with JSON array', function () {
-          // you'll get misleadning info here
+        it('should respond with JSON array', function () {
             boards.should.be.instanceOf(Array);
         });
 
@@ -45,8 +44,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                      // same here
-                        return done(err);
+                      throw new Error(err);
                     }
                     newBoard = res.body;
                     done();
@@ -70,7 +68,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                        return done(err);
+                        throw new Error(err);
                     }
                     board = res.body;
                     done();
@@ -102,7 +100,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end(function (err, res) {
                     if (err) {
-                        return done(err);
+                        throw new Error(err);
                     }
                     updatedBoard = res.body;
                     done();
@@ -128,7 +126,7 @@ describe('Board API:', function () {
                 .expect(204)
                 .end((err, res) => {
                     if (err) {
-                        return done(err);
+                        throw new Error(err);
                     }
                     done();
                 });
@@ -140,7 +138,7 @@ describe('Board API:', function () {
                 .expect(404)
                 .end((err, res) => {
                     if (err) {
-                        return done(err);
+                        throw new Error(err);
                     }
                     done();
                 });

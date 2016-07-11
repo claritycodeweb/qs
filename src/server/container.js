@@ -13,6 +13,16 @@ var measure = require('./components/measure')(http, statistics);
 //config
 var config = require('./config/environment');
 
+//db
+var db = null;
+if (process.env.NODE_ENV ===  'test' && config.inMemoryDb) {
+    // test
+    db = require('./test/mocks/db')(config, mongoose);
+} else {
+    // browser context
+    db = require('./config/db')(config, mongoose);
+}
+
 module.exports = {
     express: express,
     mongoose: mongoose,
@@ -21,5 +31,6 @@ module.exports = {
     socketIo: socketIo,
     statistics: statistics,
     measure: measure,
-    socketIoService: socketIoService
+    socketIoService: socketIoService,
+    db: db
 }

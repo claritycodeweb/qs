@@ -5,6 +5,11 @@ var CounterGroup = require('../../model/counterGroup.model');
 var StatData = require('../../model/statistic.model');
 var Board = require('../../model/board.model');
 var Counter = require('../../model/counter.model');
+//var container = require('../../container');
+
+//console.log(container.db);
+
+//require('../../test/mocks/db')(container.config, container.mongoose);
 
 // either use database in memory or move this test that it wouldn't be run
 // in CI cycle
@@ -61,9 +66,9 @@ describe('Circle Collect Statistics:', function () {
 
         afterEach(function (done) {
             StatData.remove({}, function () {
-               Board.remove({}, function () {
-                   done();
-               })
+                Board.remove({}, function () {
+                    done();
+                })
             });
         });
 
@@ -88,13 +93,13 @@ describe('Circle Collect Statistics:', function () {
                                 measure.responseTime(counter.url, 200, board, counter);
                                 setTimeout(function () {
                                     measure.stop(function () {
+                                        StatData.find().exec(function (err, stats) {
+                                            stats.forEach(function (element) {
 
-                                      // look for changes in model
-                                        measure.responses().forEach(function (element) {
+                                                assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');
 
-                                            assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');
-
-                                        }, this);
+                                            }, this);
+                                        });
                                         done();
                                     })
                                 }, 1500);
