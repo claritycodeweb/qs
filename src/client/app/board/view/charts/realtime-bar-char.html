@@ -1,0 +1,17 @@
+<div class="panel panel-dashboard">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="huge"></div>
+                <div class="controls left"><i class="fa fa-ellipsis-h"></i></div>
+                <div class="controls right"><a class="remove"><i class="fa fa-minus "></i></a></div>
+                <div class="center">{{counter.name}} </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+            <epoch-live-bar chart-class="category10" chart-height="200" chart-data="charts.realtimeBar" chart-stream="charts.realtimeBarFeed" chart-axes="charts.barAxes"></epoch-live-bar>          
+        </div>
+    </div>
+</div>

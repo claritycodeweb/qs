@@ -96,7 +96,7 @@ describe('Circle Collect Statistics:', function () {
                                         StatData.find().exec(function (err, stats) {
                                             stats.forEach(function (element) {
 
-                                                assert(499 <= element.took && element.took < 550, 'request took ' + element.took + 'ms');
+                                                assert(499 <= element.value && element.value < 550, 'request took ' + element.value + 'ms');
 
                                             }, this);
                                         });

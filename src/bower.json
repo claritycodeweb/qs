@@ -11,7 +11,9 @@
     "angular-socket-io": "^0.7.0",
     "font-awesome": "fontawesome#^4.6.3",
     "toastr": "^2.1.2",
-    "angular-cookies": "^1.5.7"
-  },
-  "devDependencies": {}
+    "angular-cookies": "^1.5.7",
+    "pie-chart": "^1.0.0",
+    "d3": "^4.2.0",
+    "ng-epoch": "^2.0.1"
+  }
 }

@@ -25,6 +25,7 @@
     "jasmine-node": "^1.14.5",
     "jit-grunt": "^0.10.0",
     "lodash": "^4.12.0",
+    "memory-cache": "^0.1.6",
     "mocha": "^2.5.2",
     "mockgoose": "^6.0.3",
     "mongoose": "^4.4.17",

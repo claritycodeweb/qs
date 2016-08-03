@@ -16,6 +16,7 @@ module.exports = function (app) {
     app.set('view engine', 'html');
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+    app.use(bodyParser.text({ type: 'application/logplex-1' }));
     app.set('appPath', path.join(config.root, 'client'));
 
     if ('dev' === env || 'test' === env) {

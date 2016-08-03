@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var statisticSchema = new mongoose.Schema({
     url: String,
-    took: String,
+    value: String,
     statusCode: String,
     isError: Boolean,
     message: String,

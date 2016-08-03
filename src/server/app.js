@@ -1,3 +1,4 @@
+/// <reference path="../typings/tsd.d.ts" />
 // Expose app
 exports = module.exports = function (container) {
 
@@ -20,8 +21,12 @@ exports = module.exports = function (container) {
             if (container.config.runMeasure) {
                 // Run app
                 runApp();
+            }else{
+                console.log("RunMesure is set to: " + container.config.runMeasure);
             }
         });
+    } else {
+        runApp();
     }
 
     function runApp() {

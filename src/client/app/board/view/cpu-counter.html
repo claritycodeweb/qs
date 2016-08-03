@@ -1,0 +1,19 @@
+<div class="panel panel-dashboard">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="huge"></div>
+                <div class="controls left"><i class="fa fa-ellipsis-h"></i></div>
+                <div class="controls right"><a class="remove"><i class="fa fa-minus "></i></a></div>
+                <div class="center">{{counter.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+            <!--{{vm.stat[vm.board._id][counter._id].last.value }} 
+                                {{vm.stat[vm.board._id][counter._id].last.statusCode}}-->
+            <pie-chart data="vm.data" options="vm.options"></pie-chart>
+        </div>
+    </div>
+</div>

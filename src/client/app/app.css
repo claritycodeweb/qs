@@ -1,4 +1,17 @@
-html, body {height: 100%}
+/*-------------------------
+	Demo page
+-------------------------*/
+@import url('board/board.css');
+
+body {
+	background-color: #23232e;
+}
+
+html, body {
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+    text-rendering: optimizeLegibility;
+}
 
 .sidebar{
     background-color:#eee;
@@ -8,7 +21,6 @@ html, body {height: 100%}
     right: 0;
         overflow-y:scroll;
 }
-
 
 .content {
   width: 100%;
@@ -41,17 +53,6 @@ ul.counters li {
 *{
 	margin:0;
 	padding:0;
-}
-
-
-/*-------------------------
-	Demo page
--------------------------*/
-
-body {
-	background-color: #23232e;
-	font: 14px normal Arial, Helvetica, sans-serif;
-	z-index: -4;
 }
 
 
@@ -381,7 +382,7 @@ body {
 }
 
 
-.center {
+.center-board {
  	position:absolute;
     width: 100px;
     height: 50px;
@@ -398,3 +399,25 @@ body {
 .center h1 {
  font-size: 40px;   
 } 
+
+
+.huge {
+    color: #fff;
+}
+.huge {
+    font-size: 40px;
+}
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+.controls {
+    color: #6C87AA;
+}
+
+.center {
+    margin: 0 auto;
+}

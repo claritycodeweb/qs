@@ -9,6 +9,7 @@ var socketIoService =  require('./config/socketio');
 
 var statistics = require('./components/statistic')(http);
 var measure = require('./components/measure')(http, statistics);
+var cache = require('./components/cache');
 
 //config
 var config = require('./config/environment');

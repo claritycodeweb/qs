@@ -9,23 +9,17 @@
             </ul>
         </nav>
     </header>
-    <div class="container-fluid" style="padding-top:60px">
+    <div class="container-fluid board-content animated" style="padding-top:60px">
         <div class="row">
             <div class="col-md-12">
-                <ul class="counters">
-                    <li class="col-sm-3" ng-repeat="counter in vm.board.counters">
-                        <h3>{{counter.name}}</h3>
-                        <p>{{counter.url}} </p>
-                        <p id='res-status-code'> Status code: {{vm.stat[vm.board._id][counter._id].last.statusCode}}
-                        </p>
-                        <p id='res-response-time'> Response time: {{vm.stat[vm.board._id][counter._id].last.took }} ms
-                        </p>
-                    </li>
-                </ul>
-
+                <div class="col-lg-4" ng-repeat="counter in vm.board.counters">
+                    <div ng-include="vm.chartTemplate(counter._chart.chartType)"></div>
+                </div>
             </div>
-            <div class="center"><h1>{{vm.board.urlName}}</h1></div>
-            <div style="clear:both"></div>
         </div>
     </div>
+    <div class="center-board">
+        <h1>{{vm.board.urlName}}</h1>
+    </div>
+    <div style="clear:both"></div>
 </div>

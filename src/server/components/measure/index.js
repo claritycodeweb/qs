@@ -13,13 +13,13 @@ var measureService = function (http, stat) {
             stat.responseTime(url).then(function (data) {
                 var res = {
                     url: url,
-                    took: data.took,
+                    value: data.took,
                     statusCode: data.res.statusCode,
                     isError: false,
                     message: data.res.statusMessage,
                     _board: board._id,
                     _counter: counter._id
-                }
+                };
 
                 model.create(res);
 
@@ -32,10 +32,12 @@ var measureService = function (http, stat) {
             }, function (err) {
                 var resErr = {
                     url: url,
-                    took: 0,
+                    value: 0,
                     statusCode: err.statusCode,
                     isError: true,
-                    message: err.message
+                    message: err.message,
+                    _board: board._id,
+                    _counter: counter._id
                 };
 
                 model.create(resErr);

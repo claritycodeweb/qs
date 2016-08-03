@@ -10,7 +10,9 @@
 
 var _ = require('lodash');
 var Board = require('../../model/board.model');
+var Chart = require('../../model/chart.model');
 var CounterGroup = require('../../model/counterGroup.model');
+var cache = require('../../components/cache');
 
 function saveUpdates(updates) {
     return function (entity) {
@@ -61,6 +63,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Boards
 module.exports.index = function (req, res) {
+    console.log(cache.get('boards'));
     Board.find({})
         .then(respondWithResult(res))
         .catch(handleError(res));
@@ -69,7 +72,7 @@ module.exports.index = function (req, res) {
 // Gets a single Board from the DB
 module.exports.show = function (req, res) {
     Board.findOne({ urlName: req.params.id })
-        .populate({ path: 'counters', populate: { path: '_counterGroup', model: CounterGroup, select: 'name' } })
+        .populate({ path: 'counters', populate: [{ path: '_counterGroup', model: CounterGroup, select: 'name short defaultUnit' },{ path: '_chart', model: Chart}] })
         .then(handleEntityNotFound(res))
         .then(respondWithResult(res))
         .catch(handleError(res));

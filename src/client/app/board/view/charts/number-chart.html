@@ -1,0 +1,20 @@
+<div class="panel panel-dashboard">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="huge"></div>
+                <div class="controls left"><i class="fa fa-ellipsis-h"></i></div>
+                <div class="controls right"><a class="remove"><i class="fa fa-minus "></i></a></div>
+                <div class="center">{{counter.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+            <div class="huge">{{vm.stat[vm.board._id][counter._id].last.value || 0}} MS</div>
+            <div class="huge">Status: {{vm.stat[vm.board._id][counter._id].last.statusCode}}</div>
+            <a href="#"><span>View Details</span></a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,10 @@ var counter = new mongoose.Schema({
         type: Number, 
         ref: "CounterGroup"
     },
+    _chart: {
+        type: Number,
+        ref: "Chart"
+    },
     url: String,
     description: String,
     interval: Number,

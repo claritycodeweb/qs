@@ -1,0 +1,33 @@
+.panel-dashboard{
+    background-color:#374862;
+}
+
+.panel-dashboard .panel-heading{
+    border-bottom:2px solid #1c3349;
+    color:#fff;
+    line-height:2;
+}
+
+.panel-dashboard .panel-footer, .panel-body{
+    border:none;
+    background-color:#2F4256;
+}
+
+.panel-dashboard .panel-heading {
+    border-bottom: 2px solid #1c3349;
+    color: #fff;
+    line-height: 2;
+}
+
+.panel-dashboard .panel-footer, .panel-body {
+    border: none;
+    background-color: #2F4256;
+}
+.panel-body {
+    text-align: center;
+}
+
+.board-content.animated {
+	-webkit-animation: showSlowlyElement 700ms; /* Chrome, Safari, Opera */
+	animation: showSlowlyElement 700ms; /* Standard syntax */
+}

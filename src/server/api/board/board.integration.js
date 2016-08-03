@@ -6,7 +6,7 @@ var request = require('supertest');
 var newBoard;
 
 describe('Board API:', function () {
-
+    
     describe('GET /api/boards', function () {
         var boards;
 
@@ -29,7 +29,7 @@ describe('Board API:', function () {
             boards.should.be.instanceOf(Array);
         });
 
-    });
+    }); 
 
     describe('POST /api/boards', function () {
         beforeEach(function (done) {

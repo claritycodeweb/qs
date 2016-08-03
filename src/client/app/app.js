@@ -8,7 +8,9 @@
     'ngCookies',
     'ngRoute',
     'btford.socket-io',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'n3-pie-chart',
+    'ng.epoch'
   ]);
 
   app.config(function ($routeProvider, $locationProvider) {
