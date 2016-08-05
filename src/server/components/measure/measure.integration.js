@@ -1,11 +1,10 @@
 //TODO
-var app = require('../..');
 var HttpMock = require('../../test/mocks/http.js');
 var CounterGroup = require('../../model/counterGroup.model');
 var StatData = require('../../model/statistic.model');
 var Board = require('../../model/board.model');
 var Counter = require('../../model/counter.model');
-//var container = require('../../container');
+var container = require('../../container');
 
 //console.log(container.db);
 
@@ -15,6 +14,15 @@ var Counter = require('../../model/counter.model');
 // in CI cycle
 
 describe('Circle Collect Statistics:', function () {
+
+    before(function(done) {
+        container.db.then(function success() {
+            done();
+        }, function error(err) {
+            done(err);
+        })
+    })
+    
     describe('Response Time', function () {
 
         var httpFake = new HttpMock();
@@ -108,11 +116,7 @@ describe('Circle Collect Statistics:', function () {
                         }, this);
 
                     }, this);
-
-
                 })
-
-
         });
     });
 });
