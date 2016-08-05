@@ -1,9 +1,15 @@
-exports = module.exports = function (config, mongoose) {
-    var mockgoose = require("mockgoose");
-
-    mockgoose(mongoose);
-
-    mongoose.connect(config.mongo.uri);
-
-    return mockgoose;
+exports = module.exports = function(config, mongoose, mockgoose) {
+    return new Promise(function(resolve, reject) {
+        mockgoose(mongoose).then(function() {
+            mongoose.connect(config.mongo.uri, function(err) {
+                if (err) {
+                  console.error('Mockgoose wrapper failed');
+                  reject(err);
+                } else {
+                  console.log('Mockgoose wrapper ok');
+                  resolve('ok');
+                }
+            });
+        });
+    });
 }

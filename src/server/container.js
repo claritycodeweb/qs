@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var mongoose = require('mongoose');
+var mockgoose = require("mockgoose");
 var http = require('http');
 var socketIo = require('socket.io');
 var socketIoService =  require('./config/socketio');
@@ -18,7 +19,7 @@ var config = require('./config/environment');
 var db = null;
 if (process.env.NODE_ENV ===  'test' && config.inMemoryDb) {
     // test
-    db = require('./test/mocks/db')(config, mongoose);
+    db = require('./test/mocks/db')(config, mongoose, mockgoose);
 } else {
     // browser context
     db = require('./config/db')(config, mongoose);
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV ===  'test' && config.inMemoryDb) {
 module.exports = {
     express: express,
     mongoose: mongoose,
+    mockgoose: mockgoose,
     http: http,
     config: config,
     socketIo: socketIo,
