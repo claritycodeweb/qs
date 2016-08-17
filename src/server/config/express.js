@@ -18,8 +18,5 @@ module.exports = function (app) {
     app.use(bodyParser.json());
     app.use(bodyParser.text({ type: 'application/logplex-1' }));
     app.set('appPath', path.join(config.root, 'client'));
-
-    if ('dev' === env || 'test' === env) {
-        app.use(express.static(app.get('appPath')));
-    }
+    app.use(express.static(app.get('appPath')));
 };
