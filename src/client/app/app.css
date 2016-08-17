@@ -2,6 +2,7 @@
 	Demo page
 -------------------------*/
 @import url('board/board.css');
+@import url('core/core.css');
 
 body {
 	background-color: #23232e;
@@ -11,6 +12,7 @@ html, body {
 	height: 100%;
 	font-family: 'Montserrat', sans-serif;
     text-rendering: optimizeLegibility;
+	text-shadow: 2px 2px 3px rgb(22, 22, 22);
 }
 
 .sidebar{
@@ -420,4 +422,9 @@ ul.counters li {
 
 .center {
     margin: 0 auto;
+}
+
+
+label {
+	color: #fff;
 }

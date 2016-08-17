@@ -1,0 +1,32 @@
+<div data-ng-controller="BoardCreateController as vmBc">
+
+    <div class="container-fluid board-content animated">
+        <div class="row">
+            <div class="view-heading">Board Create
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vmBc.cancel()">&times;</button>
+            </div>
+            <div class="col-md-12">
+
+                <form ng-submit="vmBc.create()">
+
+                    <div class="form-group">
+                        <label for="boardName">Board Name</label>
+                        <input type="text" id="boardName" class="form-control" placeholder="Board Name" ng-model="vmBc.newBoard.name">
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="vmBc.newBoard.enable"> IsEnable
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Board</button>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

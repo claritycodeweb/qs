@@ -1,4 +1,4 @@
-<div class="panel panel-dashboard">
+<div ng-controller="ClockController" class="panel panel-dashboard">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-12 text-center">
@@ -11,9 +11,9 @@
     </div>
     <div class="panel-body">
         <div>
-            <!--{{vm.stat[vm.board._id][counter._id].last.value }} 
-                                {{vm.stat[vm.board._id][counter._id].last.statusCode}}-->
-            <pie-chart data="vm.data" options="vm.options"></pie-chart>
+            <div class="clock">{{ clock | date:'HH:mm:ss'}}</div>
+            <a href="#"><span>View Details</span></a>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>

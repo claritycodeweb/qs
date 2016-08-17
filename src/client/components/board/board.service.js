@@ -33,6 +33,18 @@
                     });
 
                 return deferred.promise;
+            },
+            create: function (board){
+                var deferred = $q.defer();
+
+                $http.post('/api/boards/', board)
+                    .success(function (data, status, headers, config) {
+                        deferred.resolve(data);
+                    }).error(function (data, status, headers, config) {
+                        deferred.reject(data);
+                    });
+
+                return deferred.promise;
             }
         };
 

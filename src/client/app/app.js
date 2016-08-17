@@ -4,13 +4,15 @@
   var app = angular.module('app', [
     'app.main',
     'app.board',
+    'app.board.chart',
     'common',
     'ngCookies',
     'ngRoute',
     'btford.socket-io',
     'ui.bootstrap',
     'n3-pie-chart',
-    'ng.epoch'
+    'ng.epoch',
+    'ngAnimate'
   ]);
 
   app.config(function ($routeProvider, $locationProvider) {

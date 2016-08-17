@@ -6,10 +6,6 @@ var Board = require('../../model/board.model');
 var Counter = require('../../model/counter.model');
 var container = require('../../container');
 
-//console.log(container.db);
-
-//require('../../test/mocks/db')(container.config, container.mongoose);
-
 // either use database in memory or move this test that it wouldn't be run
 // in CI cycle
 

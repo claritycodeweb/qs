@@ -1,7 +1,7 @@
-<div class="boardmanager" ng-controller="MainController as vm">
-    <div class="breadcrumbs"><span ng-show="vm.boards.length > 0" class="folderName">Boards:</span></div>
+<div class="boardmanager" ng-controller="MainController as vmMain">
+    <div class="breadcrumbs"><span ng-show="vmMain.boards.length > 0" class="folderName">Boards:</span></div>
     <ul class="data animated">
-        <li class="folders" ng-repeat="item in vm.boards">
+        <li class="folders" ng-repeat="item in vmMain.boards">
             <a href="#/board/{{item.urlName}}" title="{{item.name}}" class="folders">
                 <span class="icon file">QS</span><span class="name">{{item.name}}</span>
                 <span class="details">{{item.counters.length}} counters</span>
@@ -9,8 +9,14 @@
         </li>
     </ul>
 
-    <div ng-show="vm.boards.length == 0" class="nothingfound">
+    <div ng-show="vmMainvm.boards.length == 0" class="nothingfound">
         <div class="noboard"></div>
         <span>No boards found</span>
+    </div>
+
+    <div class="menu-wrapper">
+        <div class="smart-view" ng-repeat="view in vmMain.views" ng-show="view.visible" ng-include='view.path' ng-init="cView = view">
+            
+        </div>
     </div>
 </div>

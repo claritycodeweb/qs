@@ -1,14 +1,5 @@
 <div data-ng-controller="BoardController as vm">
-    <header class="clearfix">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <ul class="nav navbar-nav">
-                <li class="pull-left"><a href="#/"><i class="fa fa-th" aria-hidden="true"></i></a>
-                </li>
-                <li><a href="#/board/{{vm.board.urlName}}">{{vm.board.name}}</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+
     <div class="container-fluid board-content animated" style="padding-top:60px">
         <div class="row">
             <div class="col-md-12">
@@ -18,8 +9,7 @@
             </div>
         </div>
     </div>
-    <div class="center-board">
-        <h1>{{vm.board.urlName}}</h1>
+    <div class="menu-wrapper">
+        <div class="smart-view" ng-repeat="view in vm.views" ng-show="view.visible" ng-include='view.path' ng-init="cView = view" />   
     </div>
-    <div style="clear:both"></div>
 </div>

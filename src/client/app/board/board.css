@@ -31,3 +31,17 @@
 	-webkit-animation: showSlowlyElement 700ms; /* Chrome, Safari, Opera */
 	animation: showSlowlyElement 700ms; /* Standard syntax */
 }
+
+.view-heading {
+    padding: 5px 0;
+    background-color: #F95543;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    border-bottom: 1px solid #3C3E47;
+}
+
+.clock {
+    font-size: 80px;
+    color: #fff;
+}

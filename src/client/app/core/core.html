@@ -1,4 +1,21 @@
 <div class="wrapper" ng-controller="CoreController as vm">
+    <header class="clearfix">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <ul class="nav navbar-nav">
+                <li class="pull-left"><a href="" ng-click="vm.openView()"><i class="fa fa-th" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="#/board/{{vm.boardName}}">{{vm.boardName}}</a>
+                </li>
+                <li class="pull-right"><a href="#/board/"><i class="fa fa-globe" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--<div class="menu-wrapper">
+        <div class="smart-view" ng-repeat="view in vm.views" ng-show="view.visible" ng-include='view.path' ng-init="cView = view">
+            
+        </div>
+    </div>-->
     <div id="loader-wrapper" ng-show="vm.isBusy">
         <div id="loader"></div>
     </div>

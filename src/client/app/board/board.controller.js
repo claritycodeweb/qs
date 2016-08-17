@@ -12,14 +12,15 @@
         vm.stat = {};
         vm.boardName = $routeParams.id;
 
+        vm.views = [
+            {name: 'v-board-edit', path: '/app/board/view/board-edit.html' , visible:  false, id: $routeParams.id}
+        ];
+
         function init() {
+            common.$broadcast('views.update', vm.views, true);
+            common.$broadcast('board.name', vm.boardName);
             common.activate([boardSettings($routeParams.id)], controllerId);
         }
-
-        vm.options = { thickness: 10, mode: 'gauge', total: 100 };
-        vm.data = [
-            { label: 'CPU', value: 0, color: '#d62728', suffix: '%' }
-        ];
 
         function boardSettings(id) {
             return BoardService.get(id)
@@ -63,7 +64,6 @@
                 }
                 //console.log(data);
                 $scope.$apply()
-                //vm.actual = data;
             }
         });
 

@@ -5,11 +5,22 @@ var StatData = require('../model/statistic.model');
 var Board = require('../model/board.model');
 var Counter = require('../model/counter.model');
 var Chart = require('../model/chart.model');
+var Seq = require('../model/seq.model')
 
 module.exports = new Promise(function (resolve, reject) {
 
   StatData.find({}).remove().exec();
   Chart.find({}).remove().exec();
+  Seq.find({}).remove().then(() => {
+    Seq.create({
+      _id: 'board',
+      seq: 2
+    },
+      function (error, doc) {
+        if (error)
+          reject(error);
+      })
+  });
 
   CounterGroup.find({}).remove()
     .then(() => {
@@ -103,6 +114,15 @@ module.exports = new Promise(function (resolve, reject) {
           defaultUnit: 'GB',
           platform: 'win32',
           description: 'The total disc space (gigbytes) being used by the system.',
+          enable: true
+        },
+        {
+          _id: 13,
+          name: 'clock',
+          short: 'CLOCK',
+          defaultUnit: 's',
+          platform: 'all',
+          description: 'Actual local time.',
           enable: true
         },
         function (error, doc) {
@@ -315,8 +335,27 @@ module.exports = new Promise(function (resolve, reject) {
 
             stat3.save();
 
+            var chart4 = new Chart({
+              _id: 10,
+              name: 'Local time',
+              description: 'Clock',
+              chartType: 'clock',
+              color: '#d62728',
+            });
+
+            chart4.save();
+
+            var stat4 = new Counter({
+              name: "Clock",
+              _board: board2._id,
+              _counterGroup: 13,
+              _chart: chart4._id
+            });
+
+            stat4.save();
+
             board2.counters = [
-              stat1, stat2, stat3
+              stat1, stat2, stat3, stat4
             ];
 
             board2.save();

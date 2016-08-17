@@ -20,6 +20,7 @@
     <!-- injector:css -->
     <link rel="stylesheet" href="app/app.css">
     <link rel="stylesheet" href="app/board/board.css">
+    <link rel="stylesheet" href="app/core/core.css">
     <!-- endinjector -->
 </head>
 
@@ -40,6 +41,7 @@
     <script src="bower_components/pie-chart/dist/pie-chart.min.js"></script>
     <script src="bower_components/epoch/dist/js/epoch.min.js"></script>
     <script src="bower_components/ng-epoch/ng-epoch.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -47,17 +49,23 @@
     <script src="app/app.js"></script>
     <!-- injector:js -->
     <script src="app/board/board.module.js"></script>
+    <script src="app/board/view/charts/chart.module.js"></script>
     <script src="app/main/main.module.js"></script>
     <script src="components/board/board.module.js"></script>
     <script src="components/common/common.module.js"></script>
-    <script src="app/main/main.route.js"></script>
-    <script src="app/main/main.controller.js"></script>
-    <script src="app/app.config.js"></script>
+    <script src="app/core/core.controller.js"></script>
+    <script src="app/board/counter/counter.add.controller.js"></script>
+    <script src="app/board/counter/counter.edit.controller.js"></script>
+    <script src="app/board/board.create.controller.js"></script>
+    <script src="app/board/view/charts/clockController.js"></script>
     <script src="app/board/board.controller.js"></script>
-    <script src="app/board/board.route.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/board/board.edit.controller.js"></script>
+    <script src="app/main/main.route.js"></script>
+    <script src="app/app.config.js"></script>
     <script src="components/board/board.service.js"></script>
     <script src="components/common/common.js"></script>
-    <script src="app/core/core.controller.js"></script>
+    <script src="app/board/board.route.js"></script>
     <script src="components/common/logger.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <!-- endinjector -->

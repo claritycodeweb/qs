@@ -13,6 +13,7 @@ var Board = require('../../model/board.model');
 var Chart = require('../../model/chart.model');
 var CounterGroup = require('../../model/counterGroup.model');
 var cache = require('../../components/cache');
+var Seq = require('../../components/sequence');
 
 function saveUpdates(updates) {
     return function (entity) {
@@ -72,7 +73,7 @@ module.exports.index = function (req, res) {
 // Gets a single Board from the DB
 module.exports.show = function (req, res) {
     Board.findOne({ urlName: req.params.id })
-        .populate({ path: 'counters', populate: [{ path: '_counterGroup', model: CounterGroup, select: 'name short defaultUnit' },{ path: '_chart', model: Chart}] })
+        .populate({ path: 'counters', populate: [{ path: '_counterGroup', model: CounterGroup, select: 'name short defaultUnit' }, { path: '_chart', model: Chart }] })
         .then(handleEntityNotFound(res))
         .then(respondWithResult(res))
         .catch(handleError(res));
@@ -81,9 +82,13 @@ module.exports.show = function (req, res) {
 // Creates a new Board in the DB
 module.exports.create = function (req, res) {
     req.body.urlName = req.body.name.trim().replace(/\s+/g, '-');
-    Board.create(req.body)
-        .then(respondWithResult(res, 201))
-        .catch(handleError(res));
+    Seq.getNextSequence('board')
+        .then(function (doc, err) {
+            req.body._id = doc.seq;
+            Board.create(req.body)
+                .then(respondWithResult(res, 201))
+                .catch(handleError(res));
+        }).catch(handleError(res));
 }
 
 // Updates an existing Board in the DB
