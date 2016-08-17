@@ -80,7 +80,7 @@ describe('Circle Collect Statistics:', function () {
             });
         });
 
-        it("should record multiple times took to complete multiple request", function (done) {
+        xit("should record multiple times took to complete multiple request", function (done) {
 
             Board.find()
                 .populate({
