@@ -10,7 +10,7 @@
   },
   "author": "Rafał Pisarczyk",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "body-parser": "^1.15.1",
     "bower": "1.7.9",
     "chai": "^3.5.0",
