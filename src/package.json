@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "test": "grunt test",
+    "test": "node node_modules/.bin/grunt test",
     "start": "node server/index.js",
     "postinstall": "node node_modules/.bin/bower install"
   },
