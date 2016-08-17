@@ -22,7 +22,7 @@ describe('Circle Collect Statistics:', function () {
             done(err);
         })
     })
-    
+
     describe('Response Time', function () {
 
         var httpFake = new HttpMock();
@@ -107,14 +107,12 @@ describe('Circle Collect Statistics:', function () {
                                                 assert(499 <= element.value && element.value < 550, 'request took ' + element.value + 'ms');
 
                                             }, this);
+                                            done();
                                         });
-                                        done();
                                     })
-                                }, 1500);
-
+                                }, 551);
                             }
                         }, this);
-
                     }, this);
                 })
         });
