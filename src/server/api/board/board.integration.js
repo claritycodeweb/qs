@@ -2,11 +2,33 @@
 
 var app = require('../..');
 var request = require('supertest');
+//var Seq = require('../../model/seq.model');
+//var container = require('../../container');
 
 var newBoard;
 
 describe('Board API:', function () {
-    
+
+    /*before(function (done) {
+        container.db.then(function success() {
+            Seq.find({}).remove().then(() => {
+                Seq.create({
+                    _id: 'board',
+                    seq: 2
+                },
+                    function (error, doc) {
+                        if (error) {
+                            done(error);
+                        } else {
+                            done();
+                        }
+                    })
+            });
+        }, function error(err) {
+            done(err);
+        })
+    }) */
+
     describe('GET /api/boards', function () {
         var boards;
 
@@ -18,7 +40,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                      throw new Error(err);
+                        throw new Error(err);
                     }
                     boards = res.body;
                     done();
@@ -29,7 +51,7 @@ describe('Board API:', function () {
             boards.should.be.instanceOf(Array);
         });
 
-    }); 
+    });
 
     describe('POST /api/boards', function () {
         beforeEach(function (done) {
@@ -44,7 +66,7 @@ describe('Board API:', function () {
                 .expect('Content-Type', /json/)
                 .end((err, res) => {
                     if (err) {
-                      throw new Error(err);
+                        throw new Error(err);
                     }
                     newBoard = res.body;
                     done();

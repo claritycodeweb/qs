@@ -1,7 +1,6 @@
 var seq = require('../../model/seq.model');
 
 function getNextSequence(name) {
-    console.log('get next ' + name);
     return seq.findOneAndUpdate(
         {
             _id: name

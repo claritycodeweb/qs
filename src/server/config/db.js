@@ -1,7 +1,18 @@
 exports = module.exports = function (config, mongoose) {
-    mongoose.connect(config.mongo.uri, config.mongo.options);
-    mongoose.connection.on('error', function (err) {
-        console.error('Mongo connection error: ' + err);
-        process.exit(-1);
+    return new Promise(function (resolve, reject) {
+        mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
+                if (err) {
+                    console.error('Mockgoose failed');
+                    reject(err);
+                } else {
+                    console.log('Mockgoose ok');
+                    resolve('ok');
+                }
+            });
+
+        mongoose.connection.on('error', function (err) {
+            console.error('Mongo connection error: ' + err);
+            process.exit(-1);
+        });
     });
 }

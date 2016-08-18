@@ -64,7 +64,6 @@ function handleError(res, statusCode) {
 
 // Gets a list of Boards
 module.exports.index = function (req, res) {
-    console.log(cache.get('boards'));
     Board.find({})
         .then(respondWithResult(res))
         .catch(handleError(res));
@@ -85,6 +84,7 @@ module.exports.create = function (req, res) {
     Seq.getNextSequence('board')
         .then(function (doc, err) {
             req.body._id = doc.seq;
+            //console.log('tutaj' + doc.seq);
             Board.create(req.body)
                 .then(respondWithResult(res, 201))
                 .catch(handleError(res));
