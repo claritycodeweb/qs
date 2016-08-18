@@ -13,7 +13,10 @@
 
         vm.views = [];
 
-        vm.boardName = '';
+        vm.board = {
+            name: '',
+            enable: false   
+        };
 
         vm.openView = function () {
             if (vm.views.length > 0) {
@@ -62,7 +65,7 @@
         
         $rootScope.$on('board.name',
             function (event, data) {
-                vm.boardName = data;
+                vm.board = data;
             }
         );
 

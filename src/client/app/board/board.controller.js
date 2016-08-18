@@ -18,7 +18,7 @@
 
         function init() {
             common.$broadcast('views.update', vm.views, true);
-            common.$broadcast('board.name', vm.boardName);
+            
             common.activate([boardSettings($routeParams.id)], controllerId);
         }
 
@@ -27,7 +27,7 @@
                 .then(function (data) {
                     vm.board = data;
                     vm.stat[vm.board._id] = {};
-
+                    common.$broadcast('board.name', data);
                     vm.board.counters.forEach(function (counter) {
                         vm.stat[vm.board._id][counter._id] = {};
                         vm.stat[vm.board._id][counter._id].last = {};

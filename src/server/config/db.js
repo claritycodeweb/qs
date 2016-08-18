@@ -2,10 +2,10 @@ exports = module.exports = function (config, mongoose) {
     return new Promise(function (resolve, reject) {
         mongoose.connect(config.mongo.uri, config.mongo.options, function (err) {
                 if (err) {
-                    console.error('Mockgoose failed');
+                    console.error('Mongoose failed');
                     reject(err);
                 } else {
-                    console.log('Mockgoose ok');
+                    console.log('Mongoose ok');
                     resolve('ok');
                 }
             });

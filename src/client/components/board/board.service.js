@@ -6,7 +6,7 @@
      * The Board service
      */
     function BoardService($location, $http, $q, $cookieStore) {
-        var items = {};    
+        var items = {};
 
 
         var Board = {
@@ -34,7 +34,7 @@
 
                 return deferred.promise;
             },
-            create: function (board){
+            create: function (board) {
                 var deferred = $q.defer();
 
                 $http.post('/api/boards/', board)
@@ -43,6 +43,21 @@
                     }).error(function (data, status, headers, config) {
                         deferred.reject(data);
                     });
+
+                return deferred.promise;
+            },
+            update: function (board) {
+                var deferred = $q.defer();
+
+                $http({
+                    method: 'PUT',
+                    url: '/api/boards/' + board._id,
+                    data: board
+                }).success(function (data, status, headers, config) {
+                        deferred.resolve(data);
+                    }).error(function (data, status, headers, config) {
+                        deferred.reject(data);
+                    })
 
                 return deferred.promise;
             }

@@ -37,7 +37,7 @@ exports = module.exports = function (container) {
             var Counter = require('./model/counter.model');
 
             Board
-                .find({})
+                .find({enable : true})
                 .populate({ path: 'counters', populate: { path: '_counterGroup', model: CounterGroup, select: 'name' } })
                 .then(function (board) {
                     //console.log('The creator is %s', JSON.stringify(board, null, 4));

@@ -16,7 +16,7 @@
 
         function init() {
             common.$broadcast('views.update', vmMain.views, true);
-            common.$broadcast('board.name', '');
+            common.$broadcast('board.name', {name: '', enable: true});
             common.activate([getAllBoards()], controllerId);
         }
 

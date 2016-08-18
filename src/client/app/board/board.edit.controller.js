@@ -8,46 +8,60 @@
         .controller(controllerId, ['$scope', '$http', '$rootScope', 'BoardService', '$routeParams', 'common', main]);
 
     function main($scope, $http, $rootScope, BoardService, $routeParams, common) {
-        var vm = this;
+        var vmBe = this;
 
-        vm.boardName = $routeParams.id;
-        vm.currentView = $scope.cView; // load object for view
+        vmBe.boardName = $routeParams.id;
+        vmBe.currentView = $scope.cView; // load object for view
 
-        vm.openView = function (name, id) {
-            if (vm.views.length > 0) {
-                for (var i = 0; i < vm.views.length; i++) {
-
-                    if (vm.views[i].name === name) {
-                        vm.views[i].visible = true;
-                        vm.views[i].id = id;
-                    }
-                }
-            }
-        }
-
-        vm.views = [
+        vmBe.views = [
             { name: 'v-counter-add', path: '/app/board/counter/view/counter-add.html', visible: false },
-            { name: 'v-counter-edit', path: '/app/board/counter/view/counter-edit.html', visible: false , id: null}
+            { name: 'v-counter-edit', path: '/app/board/counter/view/counter-edit.html', visible: false, id: null }
         ];
 
-        vm.cancel = function () {
-            vm.currentView.visible = false;
-        }
+        vmBe.cancel = cancel;
+        vmBe.update = update;
+        vmBe.openView = openView;
 
         function init() {
-            common.$broadcast('views.update', vm.views, false);
+            common.$broadcast('views.update', vmBe.views, false);
             boardSettings($routeParams.id);
-            console.log('BoardEditController');
+            console.log('BoardEditController Loaded');
         }
 
         function boardSettings(id) {
             return BoardService.get(id)
                 .then(function (data) {
-                    vm.board = data;
+                    vmBe.editBoard = data;
                     return data;
                 }, function (error) {
                     console.log(error);
                 });
+        }
+
+        function update() {
+            BoardService.update(vmBe.editBoard)
+                .then(function (data) {
+                    $scope.vm.board.enable = data.enable;
+                    $scope.vm.board.name = data.name;
+                }, function (error) {
+                    console.log(error);
+                });
+        }
+
+        function cancel() {
+            vmBe.currentView.visible = false;
+        }
+
+        function openView(name, id) {
+            if (vmBe.views.length > 0) {
+                for (var i = 0; i < vmBe.views.length; i++) {
+
+                    if (vmBe.views[i].name === name) {
+                        vmBe.views[i].visible = true;
+                        vmBe.views[i].id = id;
+                    }
+                }
+            }
         }
 
         init();

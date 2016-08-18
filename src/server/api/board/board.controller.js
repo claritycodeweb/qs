@@ -18,10 +18,12 @@ var Seq = require('../../components/sequence');
 function saveUpdates(updates) {
     return function (entity) {
         var updated = _.merge(entity, updates);
-        return updated.save()
-            .then(updated => {
-                return updated;
-            });
+        if (entity) {
+            return updated.save()
+                .then(updated => {
+                    return updated;
+                });
+        }
     };
 }
 
@@ -96,7 +98,7 @@ module.exports.update = function (req, res) {
     if (req.body._id) {
         delete req.body._id;
     }
-    Board.findOne({ urlName: req.params.id })
+    Board.findOne({ _id: req.params.id })
         .then(handleEntityNotFound(res))
         .then(saveUpdates(req.body))
         .then(respondWithResult(res))

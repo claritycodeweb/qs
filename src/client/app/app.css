@@ -48,6 +48,10 @@ ul.counters li {
   	z-index: 1000;
 }
 
+ul.list-group {
+	text-shadow: none;
+}
+
 /*-------------------------
 	Simple reset
 --------------------------*/
