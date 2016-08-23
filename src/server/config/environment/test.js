@@ -11,5 +11,5 @@ module.exports = {
     // Seed database on startup
     seedDB: false,
     runMeasure: false,
-    inMemoryDb: true
+    inMemoryDb: false
 }

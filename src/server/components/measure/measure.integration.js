@@ -11,7 +11,7 @@ var container = require('../../container');
 
 describe('Circle Collect Statistics:', function () {
 
-    before(function(done) {
+    before(function (done) {
         container.db.then(function success() {
             done();
         }, function error(err) {
@@ -40,27 +40,28 @@ describe('Circle Collect Statistics:', function () {
             Board.find({}).remove().then(() => {
                 Counter.find({}).remove().then(() => {
                     var board1 = new Board({ _id: 1, name: 'qs1', enable: true });
+                    var stat1 = new Counter({
+                        name: "Response 2",
+                        url: "http://localhost/fake/",
+                        _board: board1._id,
+                        _counterGroup: 1
+                    });
 
                     board1.save(function (err) {
                         if (err) {
                             done(err);
                         }
-
-                        var stat1 = new Counter({
-                            name: "Response 2",
-                            url: "http://localhost/fake/",
-                            _board: board1._id,
-                            _counterGroup: 1
+                        return stat1.save(function (err) {
+                            if (err) {
+                                done(err);
+                            }
                         });
-
-                        stat1.save();
-
+                    }).then(() => {
                         board1.counters = [
                             stat1
                         ];
 
-                        board1.save();
-
+                        return board1.save();
                     }).then(() => {
                         done();
                     });
@@ -76,7 +77,7 @@ describe('Circle Collect Statistics:', function () {
             });
         });
 
-        xit("should record multiple times took to complete multiple request", function (done) {
+        it("should record multiple times took to complete multiple request", function (done) {
 
             Board.find()
                 .populate({
@@ -94,23 +95,25 @@ describe('Circle Collect Statistics:', function () {
                     boards.forEach(function (board) {
                         board.counters.forEach(function (counter) {
                             if (typeof counter.url !== 'undefined') {
-                                measure.responseTime(counter.url, 200, board, counter);
-                                setTimeout(function () {
-                                    measure.stop(function () {
-                                        StatData.find().exec(function (err, stats) {
-                                            stats.forEach(function (element) {
-
-                                                assert(499 <= element.value && element.value < 550, 'request took ' + element.value + 'ms');
-
-                                            }, this);
-                                            done();
-                                        });
-                                    })
-                                }, 551);
+                                measure.responseTime(counter.url, 200, board, counter); //run time measure for request
                             }
                         }, this);
+
+                        setTimeout(function () {
+                            measure.stop(function () {  //stop measuring 
+                                StatData.find().exec(function (err, stats) { //get collect data from DB
+                                    stats.forEach(function (element) {
+
+                                        assert(499 <= element.value && element.value < 550, 'request took ' + element.value + 'ms');  //check if request complted with proper time 
+
+                                    }, this);
+                                    done();
+                                });
+                            })
+                        }, 1551);
+
                     }, this);
-                })
+                });
         });
     });
 });

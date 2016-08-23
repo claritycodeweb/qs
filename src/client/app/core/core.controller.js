@@ -18,6 +18,8 @@
             enable: false   
         };
 
+        vm.direction = '';
+
         vm.openView = function () {
             if (vm.views.length > 0) {
                 if(vm.views[0].visible === true){

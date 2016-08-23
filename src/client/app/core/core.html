@@ -19,7 +19,7 @@
     <div id="loader-wrapper" ng-show="vm.isBusy">
         <div id="loader"></div>
     </div>
-    <div ng-view style="height:100%;"></div>
+    <div ng-class="vm.direction" ng-view style="height:100%;"></div>
 
     <footer class="clearfix" ng-if="!vm.board.enable">
         <nav class="navbar navbar-inverse navbar-fixed-bottom" style="border-top: 1px solid #3C3E47;">

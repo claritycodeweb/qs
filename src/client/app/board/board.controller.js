@@ -5,20 +5,20 @@
     var controllerId = 'BoardController';
 
     angular.module('app.board')
-        .controller(controllerId, ['$scope', '$http', '$rootScope', 'BoardService', '$routeParams', 'common', main]);
+        .controller(controllerId, ['$scope', '$http', '$rootScope', 'BoardService', '$routeParams', 'common', '$location', '$timeout', main]);
 
-    function main($scope, $http, $rootScope, BoardService, $routeParams, common) {
+    function main($scope, $http, $rootScope, BoardService, $routeParams, common, $location, $timeout) {
         var vm = this;
         vm.stat = {};
         vm.boardName = $routeParams.id;
 
         vm.views = [
-            {name: 'v-board-edit', path: '/app/board/view/board-edit.html' , visible:  false, id: $routeParams.id}
+            { name: 'v-board-edit', path: '/app/board/view/board-edit.html', visible: false, id: $routeParams.id }
         ];
 
         function init() {
             common.$broadcast('views.update', vm.views, true);
-            
+
             common.activate([boardSettings($routeParams.id)], controllerId);
         }
 
@@ -53,6 +53,16 @@
 
         vm.chartTemplate = function (chartType) {
             return '/app/board/view/charts/' + chartType + '-chart.html';
+        }
+
+        vm.nextBoard = function (direction) {
+            $scope.$parent.vm.direction = 'slide-' + direction;
+
+            if ($location.url() === "/board/qs2") {
+                $location.path("/board/qs1");
+            } else {
+                $location.path("/board/qs2");
+            }
         }
 
         $rootScope.$on('new-statistics', function (event, data) {
