@@ -1,4 +1,4 @@
-<div  data-ng-controller="BoardController as vm">
+<div data-ng-controller="BoardController as vm">
 
     <div class="container-fluid board-content animated" style="padding-top:60px">
         <div class="row">
@@ -10,10 +10,13 @@
         </div>
     </div>
     <div class="menu-wrapper">
-        <div class="smart-view" ng-repeat="view in vm.views" ng-show="view.visible" ng-include='view.path' ng-init="cView = view"
-        />
+        <div ng-show="vm.isBusy" class="page-splash">
+            <div data-spinner="vm.spinnerOptions"></div>
+        </div>
+        <div class="smart-view" ng-repeat="view in vm.views" ng-show="view.visible" ng-include='view.path' ng-init="cView = view">
+        </div>
     </div>
-    <a class="left carousel-control qs-carousel" href=""  ng-click="vm.nextBoard('right')" data-slide="prev">
+    <a class="left carousel-control qs-carousel" href="" ng-click="vm.nextBoard('right')" data-slide="prev">
         <span class="icon-prev"></span>
     </a>
     <a class="right carousel-control qs-carousel" href="" ng-click="vm.nextBoard('left')" data-slide="next">

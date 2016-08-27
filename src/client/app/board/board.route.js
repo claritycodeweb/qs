@@ -7,6 +7,6 @@ angular.module('app.main')
                 templateUrl: 'app/main/main.html'
             })
             .when('/board/:id', {
-                templateUrl: 'app/board/board.html',
+                templateUrl: 'app/board/view/board.html',
             })
     });

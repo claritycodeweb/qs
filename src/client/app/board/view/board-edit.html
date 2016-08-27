@@ -1,5 +1,4 @@
 <div data-ng-controller="BoardEditController as vmBe">
-
     <div class="container-fluid board-content animated">
         <div class="row">
             <div class="view-heading">Board Edit
@@ -13,22 +12,24 @@
                         <label for="boardName">Board Name</label>
                         <input type="text" id="boardName" class="form-control" placeholder="Board Name" ng-model="vmBe.editBoard.name">
                     </div>
-                
+
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" ng-model="vmBe.editBoard.enable"> IsEnable
                         </label>
                     </div>
+
                     <div class="form-group">
                         <button type="button" class="btn btn-info" ng-click="vmBe.openView('v-counter-add')">Add Counter</button>
                     </div>
 
                     <div class="form-group">
                         <label for="disabledTextInput">Counters</label>
-                        <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="counter in vmBe.editBoard.counters" ng-click="vmBe.openView('v-counter-edit', counter._id)">{{counter.name}}</li>
-                        </ul>
+                        <div class="list-group">
+                            <a href="" class="list-group-item list-group-item-action" ng-repeat="counter in vmBe.editBoard.counters" ng-click="vmBe.openView('v-counter-edit', counter._id)">{{counter.name}}</a>
+                        </div>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>
@@ -37,5 +38,4 @@
             </div>
         </div>
     </div>
-
 </div>

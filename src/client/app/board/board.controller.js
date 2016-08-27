@@ -5,13 +5,13 @@
     var controllerId = 'BoardController';
 
     angular.module('app.board')
-        .controller(controllerId, ['$scope', '$http', '$rootScope', 'BoardService', '$routeParams', 'common', '$location', '$timeout', main]);
+        .controller(controllerId, ['$scope', '$http', '$rootScope', 'BoardService', '$routeParams', 'common', '$location', '$timeout', 'config', main]);
 
-    function main($scope, $http, $rootScope, BoardService, $routeParams, common, $location, $timeout) {
+    function main($scope, $http, $rootScope, BoardService, $routeParams, common, $location, $timeout, config) {
         var vm = this;
         vm.stat = {};
         vm.boardName = $routeParams.id;
-
+        vm.isBusy = false;
         vm.views = [
             { name: 'v-board-edit', path: '/app/board/view/board-edit.html', visible: false, id: $routeParams.id }
         ];
@@ -75,6 +75,10 @@
                 //console.log(data);
                 $scope.$apply()
             }
+        });
+
+        $rootScope.$on(config.events.smartViewSpinner, function (event, data) {
+            vm.isBusy = data.show;
         });
 
         init();

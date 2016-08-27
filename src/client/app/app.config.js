@@ -8,6 +8,7 @@
 
     var events = {
         spinnerToggle: 'spinner.toggle',
+        smartViewSpinner: 'smartview.spinner.toggle'
     };
 
     var config = {
@@ -34,6 +35,7 @@
     app.config(['commonConfigProvider', function (p) {
         p.config.events = config.events;
         p.config.spinnerToggleEvent = config.events.spinnerToggle;
+        p.config.smartViewSpinner = config.events.smartViewSpinner;
     }]);
 
 })();

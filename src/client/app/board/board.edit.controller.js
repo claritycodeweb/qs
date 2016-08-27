@@ -39,12 +39,15 @@
         }
 
         function update() {
+            $scope.vm.isBusy = true;
             BoardService.update(vmBe.editBoard)
                 .then(function (data) {
+                    $scope.vm.isBusy = false;
                     $scope.vm.board.enable = data.enable;
                     $scope.vm.board.name = data.name;
                 }, function (error) {
                     console.log(error);
+                    $scope.vm.isBusy = false;
                 });
         }
 

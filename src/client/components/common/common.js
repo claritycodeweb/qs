@@ -7,7 +7,15 @@
             $q: $q,
             $timeout: $timeout,
             activate: activate,
-            logger: logger
+            logger: logger,
+            spinnerSmartView: {
+                show: function (spinnerfn) {
+                    $broadcast(commonConfig.config.smartViewSpinner, { show: true });
+                },
+                hide: function (spinnerfn) {
+                    $broadcast(commonConfig.config.smartViewSpinner, { show: false });
+                }
+            },
         };
 
         return Common;
@@ -33,7 +41,7 @@
             };
         };
     }
-    
+
     angular.module('common')
         .provider('commonConfig', CommonProvider);
 

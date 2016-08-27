@@ -2,32 +2,32 @@
 
 var app = require('../..');
 var request = require('supertest');
-//var Seq = require('../../model/seq.model');
-//var container = require('../../container');
+var Seq = require('../../model/seq.model');
+var container = require('../../container');
 
 var newBoard;
 
 describe('Board API:', function () {
 
-    /*before(function (done) {
+    before(function (done) {
         container.db.then(function success() {
-            Seq.find({}).remove().then(() => {
-                Seq.create({
-                    _id: 'board',
-                    seq: 2
-                },
-                    function (error, doc) {
+            Seq.find({}).remove()
+                .then(() => {
+                    Seq.create({
+                        _id: 'board',
+                        seq: 2
+                    }, function (error, doc) {
                         if (error) {
                             done(error);
                         } else {
                             done();
                         }
                     })
-            });
+                });
         }, function error(err) {
             done(err);
         })
-    }) */
+    });
 
     describe('GET /api/boards', function () {
         var boards;
@@ -113,7 +113,7 @@ describe('Board API:', function () {
 
         beforeEach(function (done) {
             request(app)
-                .put('/api/boards/' + newBoard.urlName)
+                .put('/api/boards/' + newBoard._id)
                 .send({
                     name: 'Updated Board',
                     enable: false

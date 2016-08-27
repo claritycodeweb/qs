@@ -24,11 +24,13 @@ exports = module.exports = function (container) {
             }else{
                 console.log("RunMesure is set to: " + container.config.runMeasure);
             }
+        }, function(error){
+            console.error("Error while seeding db:  " + error);
         });
     } else {
         runApp();
     }
-
+    
     function runApp() {
         app.qs = server.listen(container.config.port, container.config.ip, function () {
             console.log('Server listening on %d, in %s mode', container.config.port, app.get('env'));

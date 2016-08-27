@@ -49,9 +49,6 @@ Logs.prototype.parse = function (data) {
                 }
             });
         });
-
-        // var board = _.find(boards, { '_id': data.boards[0] });
-        // console.log(board);
     }
 };
 

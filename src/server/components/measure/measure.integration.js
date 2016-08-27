@@ -89,7 +89,7 @@ describe('Circle Collect Statistics:', function () {
                     }
                 }).exec(function (err, boards) {
                     if (err) {
-                        assert.fail(err);
+                        done(err);
                     }
 
                     boards.forEach(function (board) {
