@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 var chartSchema = new mongoose.Schema({
-    _id: Number,
+    //_id: Number,
     name: String,
     description: String,
     total: Number,

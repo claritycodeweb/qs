@@ -52,7 +52,7 @@ function board1Create() {
     return board1.save().then(() => {
         return Chart.create(
             {
-                _id: 1,
+                //_id: 1,
                 name: 'Response Time Chart1',
                 description: 'Response Time Chart1 Desc',
                 total: 0,
@@ -60,7 +60,7 @@ function board1Create() {
                 chartType: 'number'
             },
             {
-                _id: 2,
+                //_id: 2,
                 name: 'CPU',
                 description: 'CPU desc',
                 total: 100,
@@ -68,7 +68,7 @@ function board1Create() {
                 chartType: 'pie'
             },
             {
-                _id: 3,
+                //_id: 3,
                 name: 'RAM',
                 description: 'RAM desc',
                 total: 16,
@@ -76,7 +76,7 @@ function board1Create() {
                 chartType: 'pie'
             },
             {
-                _id: 4,
+                //_id: 4,
                 name: 'Disc',
                 description: 'Disc desc',
                 chartType: 'pie',
@@ -84,7 +84,7 @@ function board1Create() {
                 color: '#1f77b4',
             },
             {
-                _id: 5,
+                //_id: 5,
                 name: 'Response Time',
                 description: 'Response Time Chart1 Desc',
                 chartType: 'number',
@@ -92,7 +92,7 @@ function board1Create() {
                 color: '#d62728',
             },
             {
-                _id: 6,
+                //_id: 6,
                 name: 'Response Time',
                 description: 'Response Time Chart1 Desc',
                 chartType: 'number',
@@ -156,7 +156,7 @@ function board2Create() {
     return board2.save().then(() => {
         return Chart.create(
             {
-                _id: 7,
+                //_id: 7,
                 name: 'Response Time Chart1',
                 description: 'Response Time Chart1 Desc',
                 chartType: 'number',
@@ -164,7 +164,7 @@ function board2Create() {
                 color: '#d62728',
             },
             {
-                _id: 8,
+                //_id: 8,
                 name: 'CPU',
                 description: 'CPU desc',
                 chartType: 'pie',
@@ -172,7 +172,7 @@ function board2Create() {
                 color: '#d62728',
             },
             {
-                _id: 9,
+                //_id: 9,
                 name: 'Response Time Chart1',
                 description: 'Response Time Chart1 Desc',
                 chartType: 'number',
@@ -180,7 +180,7 @@ function board2Create() {
                 color: '#d62728',
             },
             {
-                _id: 10,
+                //_id: 10,
                 name: 'Local time',
                 description: 'Clock',
                 chartType: 'clock',

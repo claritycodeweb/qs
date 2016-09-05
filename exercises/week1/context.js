@@ -2,7 +2,7 @@ var assert = require('assert');
 
 function loop(array, fn){
   for ( var i = 0; i < array.length; i++ ) {
-    // todo: Implement me!
+    fn.call(array, array[i]);
   }
 }
 

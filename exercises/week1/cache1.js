@@ -14,10 +14,12 @@ function isPrime( num ) {
   return prime;
 }
 
-console.log(isPrime(5));
+console.log(isPrime(5)); // simpy invoking the function
 
-// todo: why it doesn't work?
+// todo: why it doesn't work? (in function isPrime this pointing to global object)
 assert.equal(isPrime.cache, undefined);
 
 // todo: why this works?
 assert.equal(global.cache[5], true);
+
+//this is point at diferent object depending on how  the function is invoke, in this case this in function isPrime pointing to global(window)

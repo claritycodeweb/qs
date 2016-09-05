@@ -13,7 +13,12 @@
         vmC.boardName = $routeParams.id;
         vmC.currentView = $scope.cView;
         vmC.model = {
-            counterGroup: null
+            counterGroup: null,
+            chartType: 'select types'
+        };
+
+        vmC.chart = {
+            chartTypes : ['number', 'pie']
         };
 
         $scope.$watch('vmC.currentView.id', function () {
@@ -31,15 +36,11 @@
             common.spinnerSmartView.show();
 
             var promieses = {
-                counterGroup: CounterService.group.getCounterGroup(),
-                counterGroup1: CounterService.group.getCounterGroup(),
-                counterGroup2: CounterService.group.getCounterGroup(),
+                counterGroup: CounterService.group.getCounterGroup()
             };
           
             $q.all(promieses).then(function (values) {
                 vmC.counterGroup = values.counterGroup;
-                vmC.counterGroup1 = values.counterGroup1;
-                vmC.counterGroup2 = values.counterGroup2;
 
                 common.spinnerSmartView.hide();
             }, function (error) {

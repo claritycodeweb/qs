@@ -6,5 +6,6 @@ var controller = require('./counter.controller');
 var router = express.Router();
 
 router.get('/:id', controller.show);
+router.post('/', controller.create);
 
 module.exports = router;

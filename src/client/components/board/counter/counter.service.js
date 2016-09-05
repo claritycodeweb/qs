@@ -34,10 +34,10 @@
 
                 return deferred.promise;
             },
-            create: function (board) {
+            create: function (model) {
                 var deferred = $q.defer();
 
-                $http.post('/api/boards/', board)
+                $http.post('/api/counters/', model)
                     .success(function (data, status, headers, config) {
                         deferred.resolve(data);
                     }).error(function (data, status, headers, config) {

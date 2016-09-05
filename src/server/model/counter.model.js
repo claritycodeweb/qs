@@ -13,7 +13,7 @@ var counter = new mongoose.Schema({
         ref: "CounterGroup"
     },
     _chart: {
-        type: Number,
+        type: Object,
         ref: "Chart"
     },
     url: String,

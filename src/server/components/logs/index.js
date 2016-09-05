@@ -33,7 +33,6 @@ Logs.prototype.parse = function (data) {
         _.forEach(data.boards, function (_id) {
             _.forEach(boards, function (board) {
                 if (board._id === _id) {
-                    console.log('tutaj');
                     _.forEach(board.counters, function (counter) {
                         if (counter._counterGroup.name === data.counterName) {
                             var model = {

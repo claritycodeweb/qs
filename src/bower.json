@@ -14,11 +14,32 @@
     "angular-cookies": "^1.5.7",
     "pie-chart": "^1.0.0",
     "d3": "^4.2.0",
-    "ng-epoch": "^2.0.1",
+    "ng-epoch": "2.0.1",
     "angular-animate": "^1.5.8"
   },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "less/font-awesome.less",
+        "scss/font-awesome.scss"
+      ]
+    },
+    "d3": {
+      "main": [
+        "d3.js"
+      ]
+    }
+  },
   "resolutions": {
-    "d3": "^4.2.0",
-    "angular": "^1.5.6"
+    "angular": "1.5.8",
+    "d3": "~3.1.7"
   }
 }
