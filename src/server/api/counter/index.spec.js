@@ -4,10 +4,12 @@ var proxyquire = require('proxyquire').noPreserveCache();
 
 var counterCtrlStub = {
     show: 'counterCtrl.show',
+    create: 'counterCtrl.create',
 };
 
 var routerStub = {
-    get: sinon.spy()
+    get: sinon.spy(),
+    post: sinon.spy()
 };
 
 // require the index with our stubbed out modules
@@ -34,5 +36,5 @@ describe('Counter API Router:', function () {
                 .should.have.been.calledOnce;
         });
 
-    });   
+    });
 });
