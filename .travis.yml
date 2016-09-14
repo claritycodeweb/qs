@@ -8,4 +8,6 @@ matrix:
 before_script:
   - bower install
 services: mongodb
-before_install: cd src
+before_install: 
+  -cd src
+  -ls
