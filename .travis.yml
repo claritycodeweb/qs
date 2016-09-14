@@ -9,3 +9,7 @@ before_install: cd src
 before_script:
   - bower install
 services: mongodb
+deploy:
+  provider: heroku
+  app: board-services # optional if it's the same as your repo name
+  api_key: "884a69c0-28aa-4833-a615-3e88df20f45f"
