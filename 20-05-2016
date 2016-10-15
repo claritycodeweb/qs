@@ -1,5 +1,0 @@
-Http error handling:
-- https://nodejs.org/api/http.html#http_http_get_options_callback
-- node dependency injection
-- tests for module
-- move socket out of measurement module
